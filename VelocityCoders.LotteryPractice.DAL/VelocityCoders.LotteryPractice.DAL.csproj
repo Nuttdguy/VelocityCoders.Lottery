@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="LotteryDAL.cs" />
+    <Compile Include="LotteryWinningNumberDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

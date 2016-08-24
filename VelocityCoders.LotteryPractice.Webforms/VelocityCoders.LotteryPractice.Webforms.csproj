@@ -66,7 +66,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Powerball.aspx" />
+    <Content Include="App_Themes\Main\images\gopher5Logo.png" />
+    <Content Include="App_Themes\Main\images\megaMillionsLogo.png" />
+    <Content Include="App_Themes\Main\images\northstarLogo.png" />
+    <Content Include="App_Themes\Main\images\powerballLogo.png" />
+    <Content Include="LotteryForm.aspx" />
     <Content Include="packages.config" />
+    <Content Include="App_Themes\Main\main.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -81,6 +88,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Powerball.aspx.cs">
+      <DependentUpon>Powerball.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Powerball.aspx.designer.cs">
+      <DependentUpon>Powerball.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LotteryForm.aspx.cs">
+      <DependentUpon>LotteryForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LotteryForm.aspx.designer.cs">
+      <DependentUpon>LotteryForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LotteryPratice.aspx.cs">
       <DependentUpon>LotteryPratice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -100,6 +121,7 @@
       <Name>VelocityCoders.LotteryPractice.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
