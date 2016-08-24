@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using VelocityCoders.LotteryPractice.Models;
 using VelocityCoders.LotteryPractice.DAL;
 using System.Collections.Generic;

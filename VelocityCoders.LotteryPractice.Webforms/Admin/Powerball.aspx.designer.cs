@@ -22,6 +22,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// lblLotteryGameAbbreviation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLotteryGameAbbreviation;
+        
+        /// <summary>
         /// selectLotteryGameDropDown control.
         /// </summary>
         /// <remarks>
@@ -38,15 +47,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList selectDrawingDateDropDown;
-        
-        /// <summary>
-        /// lblLotteryGameAbbreviation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLotteryGameAbbreviation;
         
         /// <summary>
         /// lblHowToPlay control.

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "App_Themes/Main/main.css",
+    "inputFile": "App_Themes/Main/main.less"
+  },
+  {
+    "outputFile": "App_Themes/Admin/Admin.css",
+    "inputFile": "App_Themes/Admin/Admin.less"
+  }
+]

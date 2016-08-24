@@ -1,0 +1,58 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body #Container {
+  width: 960px;
+  margin: auto;
+}
+body #Container h1 {
+  padding: 2em 1em 1em;
+}
+body #Container h1::after {
+  display: block;
+  padding-bottom: .3em;
+  content: " ";
+  border-bottom: 2px solid #000;
+}
+body #Container .inputFormContainer {
+  padding: 1.3em 2em;
+  margin-left: 5%;
+  background-color: rgba(26, 55, 73, 0.4);
+  width: 640px;
+  border-radius: 5px;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+}
+body #Container .inputFormContainer div {
+  display: block;
+  padding: .3em 0;
+  height: 100%;
+}
+body #Container .inputFormContainer div .btnSubmitResult {
+  position: relative;
+  width: 180px;
+  left: 53%;
+  margin-top: 12px;
+  height: 34px;
+}
+body #Container .inputFormContainer label {
+  display: inline-block;
+  font-weight: 700;
+  width: 240px;
+  font-size: 1.1em;
+}
+body #Container .inputFormContainer input,
+body #Container .inputFormContainer select {
+  width: 272px;
+  height: 27px;
+  font-size: 1.1em;
+}
+body #Container .inputFormContainer #calDrawingDate {
+  display: inline-block;
+  vertical-align: middle;
+}

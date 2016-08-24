@@ -1,0 +1,82 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+}
+#wrapper {
+  width: 100%;
+  margin: auto;
+}
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body h1,
+body h2 {
+  text-align: center;
+}
+body h1 {
+  padding-top: 1.5em;
+  padding-bottom: .8em;
+}
+body h2 {
+  padding-bottom: .8em;
+}
+body h2 .abbr {
+  display: inline-block;
+  border: 1px solid #ff6a00;
+  margin-top: .45em;
+  padding: .4em;
+  border-radius: 50%;
+}
+body .pageContainer {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+body .gameSelectorContainer {
+  box-sizing: border-box;
+  padding: .8em 2em;
+  width: 100%;
+}
+body .gameSelectorContainer .gameSelectInner {
+  width: 50%;
+  float: left;
+}
+body .gameSelectorContainer .gameSelectInner .gameInnerContentLeft {
+  text-align: right;
+  padding: .5em 1.75em;
+  border-right: 2px solid #000;
+}
+body .gameSelectorContainer .gameSelectInner .gameInnerContentLeft h2 {
+  text-align: right;
+  padding-right: 40px;
+}
+body .gameSelectorContainer .gameSelectInner .gameInnerContentRight {
+  text-align: left;
+  padding: .5em 1.75em;
+  border-left: 2px solid #000;
+}
+body .gameSelectorContainer .gameSelectInner .gameInnerContentRight h2 {
+  text-align: left;
+  padding-left: 40px;
+}
+body .gameSelectorContainer .gameSelectInner .gameDropDown {
+  width: 60%;
+  font-size: 1.2em;
+  margin: 0 1.5em 1.2em;
+}
+body .gameSelectorContainer .getLotteryResultBtn {
+  margin-top: .5em;
+  padding: .5em;
+  font-size: 1.2em;
+  background-color: transparent;
+  border: 1px solid #ff6a00;
+}
+body .gameSelectorContainer .getLotteryResultBtn:hover {
+  background-color: rgba(255, 106, 0, 0.8);
+  transition: all .7s;
+}

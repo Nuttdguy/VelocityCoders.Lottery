@@ -66,14 +66,33 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AddLotteryGame.aspx" />
+    <Content Include="Admin\AddLotteryGameResult.aspx" />
     <Content Include="Admin\Powerball.aspx" />
+    <Content Include="App_Themes\Admin\Admin.css">
+      <DependentUpon>Admin.less</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\Admin\Admin.min.css">
+      <DependentUpon>Admin.css</DependentUpon>
+    </Content>
     <Content Include="App_Themes\Main\images\gopher5Logo.png" />
     <Content Include="App_Themes\Main\images\megaMillionsLogo.png" />
     <Content Include="App_Themes\Main\images\northstarLogo.png" />
     <Content Include="App_Themes\Main\images\powerballLogo.png" />
+    <Content Include="App_Themes\Main\main.css">
+      <DependentUpon>main.less</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\Main\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="LotteryForm.aspx" />
     <Content Include="packages.config" />
     <Content Include="App_Themes\Main\main.less" />
+    <Content Include="App_Themes\Admin\Admin.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -88,6 +107,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddLotteryGame.aspx.cs">
+      <DependentUpon>AddLotteryGame.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddLotteryGame.aspx.designer.cs">
+      <DependentUpon>AddLotteryGame.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddLotteryGameResult.aspx.cs">
+      <DependentUpon>AddLotteryGameResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddLotteryGameResult.aspx.designer.cs">
+      <DependentUpon>AddLotteryGameResult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Powerball.aspx.cs">
       <DependentUpon>Powerball.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,7 +186,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildWebCompiler.1.11.319\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.11.319\build\BuildWebCompiler.targets'))" />
   </Target>
+  <Import Project="..\packages\BuildWebCompiler.1.11.319\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.11.319\build\BuildWebCompiler.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

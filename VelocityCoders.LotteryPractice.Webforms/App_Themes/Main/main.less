@@ -1,5 +1,103 @@
-﻿body {
+﻿* {
+    margin: 0;
+    padding: 0;
+}
 
+#wrapper {
+    width: 100%;
+    margin: auto;
 
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    h1 {
+        padding-top: 1.5em;
+        padding-bottom: .8em;
+    }
+
+    h2 {
+        padding-bottom: .8em;
+        
+        .abbr {
+            display: inline-block;
+            border: 1px solid rgb(255, 106, 0);
+            margin-top: .45em;
+            padding: .4em;
+            border-radius: 50%;
+        }
+    }
+
+    .pageContainer {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    .gameSelectorContainer {
+
+        box-sizing: border-box;
+        padding: .8em 2em;
+        width: 100%;
+
+        .gameSelectInner {
+            width: 50%;
+            float: left;
+
+            .gameInnerContentLeft {
+                text-align: right;
+                padding: .5em 1.75em;
+                border-right: 2px solid #000;
+
+                h2 {
+                    text-align: right;
+                    padding-right: 40px;
+                }
+            }
+
+            .gameInnerContentRight {
+                text-align: left;
+                padding: .5em 1.75em;
+                border-left: 2px solid #000;
+
+                h2 {
+                    text-align: left;
+                    padding-left: 40px;
+                }
+            }
+
+            .gameDropDown {
+                width: 60%;
+                font-size: 1.2em;
+                margin: 0 1.5em 1.2em;
+            }
+        }
+
+        .getLotteryResultBtn {
+            margin-top: .5em;
+            padding: .5em;
+            font-size: 1.2em;
+            background-color: transparent;
+            border: 1px solid rgb(255, 106, 0);
+        }
+
+        .getLotteryResultBtn:hover {
+            background-color: rgba(255, 106, 0, .8);
+            transition: all .7s;
+        }
+
+    }
 
 }
