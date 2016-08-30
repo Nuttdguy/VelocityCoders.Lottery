@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+.clearFix:before,
+.clearFix:after {
+  display: table;
+  content: " ";
+}
+.clearFix:after {
+  clear: both;
+}
 body {
   width: 100vw;
   font-size: 16px;
@@ -12,20 +20,17 @@ body #Container {
   margin: auto;
 }
 body #Container h1 {
-  padding: 2em 1em 1em;
+  padding: .75em 0 .75em ;
 }
 body #Container h1::after {
   display: block;
   padding-bottom: .3em;
   content: " ";
-  border-bottom: 2px solid #000;
+  border-bottom: 5px solid #000;
 }
 body #Container .inputFormContainer {
   padding: 1.3em 2em;
-  margin-left: 5%;
-  background-color: rgba(26, 55, 73, 0.4);
-  width: 640px;
-  border-radius: 5px;
+  /*border: 2px solid #f18e01;*/
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
 }
 body #Container .inputFormContainer div {
@@ -35,24 +40,101 @@ body #Container .inputFormContainer div {
 }
 body #Container .inputFormContainer div .btnSubmitResult {
   position: relative;
-  width: 180px;
-  left: 53%;
-  margin-top: 12px;
-  height: 34px;
+  width: 240px;
+  left: 278px;
+  margin-top: 21px;
+  height: auto;
+  background-color: transparent;
+  border: 5px solid #594d7c;
+  font-size: 1.3em;
+  padding: .15em;
 }
 body #Container .inputFormContainer label {
   display: inline-block;
   font-weight: 700;
   width: 240px;
-  font-size: 1.1em;
+  font-size: 1.3em;
+}
+body #Container .inputFormContainer label:first-of-type {
+  padding-top: 27px;
 }
 body #Container .inputFormContainer input,
 body #Container .inputFormContainer select {
   width: 272px;
-  height: 27px;
-  font-size: 1.1em;
+  height: 36px;
 }
-body #Container .inputFormContainer #calDrawingDate {
+body #Container .inputFormContainer textarea {
+  min-width: 272px;
+  min-height: 80px;
+  vertical-align: middle;
+}
+body #Container .inputFormContainer table {
   display: inline-block;
   vertical-align: middle;
+}
+body #Container .siteNavigationContainer {
+  height: 60px;
+  display: block;
+}
+body #Container .siteNavigationContainer ul {
+  float: right;
+}
+body #Container .siteNavigationContainer li {
+  display: inline-block;
+  list-style: none;
+  padding: 32px 21px;
+}
+body #Container .siteNavigationContainer a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #000;
+}
+body #Container .siteNavigationContainer a:hover {
+  border-bottom: 1px solid red;
+  padding-bottom: 4px;
+}
+body #Container #ContentContainer {
+  display: inline-block;
+  box-sizing: border-box;
+  /*border: 1px solid red;*/
+  float: left;
+  width: 70%;
+}
+body #Container #SideBarContainer {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  float: right;
+  width: 30%;
+  height: 100%;
+}
+body #Container #SideBarContainer .sidebarSpacer {
+  display: block;
+  padding-top: 36px;
+}
+body #Container #SideBarContainer h2 {
+  position: absolute;
+  top: 54%;
+  left: -50%;
+  padding: 0;
+  margin: 0 0 0 -124px;
+  width: 146%;
+  text-align: center;
+  border: 5px solid  #594d7c;
+  transform: rotate(-90deg);
+}
+body #Container #SideBarContainer label {
+  display: inline-block;
+  font-size: 1.5em;
+  width: 120px;
+  padding: 16px 8px 16px 8px;
+}
+body #Container #SideBarContainer input {
+  scrollbar-arrow-color: transparent;
+  width: 55px;
+  height: 45px;
+  margin-left: 18px;
+  vertical-align: middle;
+  font-size: 1.5em;
+  padding: 2px 2px 2px 12px;
 }

@@ -68,7 +68,7 @@
   <ItemGroup>
     <Content Include="Admin\AddLotteryGame.aspx" />
     <Content Include="Admin\AddLotteryGameResult.aspx" />
-    <Content Include="Admin\Powerball.aspx" />
+    <Content Include="Admin\LotteryResult.aspx" />
     <Content Include="App_Themes\Admin\Admin.css">
       <DependentUpon>Admin.less</DependentUpon>
     </Content>
@@ -85,7 +85,6 @@
     <Content Include="App_Themes\Main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
-    <Content Include="LotteryForm.aspx" />
     <Content Include="packages.config" />
     <Content Include="App_Themes\Main\main.less" />
     <Content Include="App_Themes\Admin\Admin.less" />
@@ -93,6 +92,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="MasterPages\Section2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -101,7 +101,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LotteryPratice.aspx" />
+    <Content Include="UserControl\UCNavMain.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -121,40 +121,39 @@
     <Compile Include="Admin\AddLotteryGameResult.aspx.designer.cs">
       <DependentUpon>AddLotteryGameResult.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Powerball.aspx.cs">
-      <DependentUpon>Powerball.aspx</DependentUpon>
+    <Compile Include="Admin\LotteryResult.aspx.cs">
+      <DependentUpon>LotteryResult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\Powerball.aspx.designer.cs">
-      <DependentUpon>Powerball.aspx</DependentUpon>
+    <Compile Include="Admin\LotteryResult.aspx.designer.cs">
+      <DependentUpon>LotteryResult.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LotteryForm.aspx.cs">
-      <DependentUpon>LotteryForm.aspx</DependentUpon>
+    <Compile Include="MasterPages\Section2.Master.cs">
+      <DependentUpon>Section2.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LotteryForm.aspx.designer.cs">
-      <DependentUpon>LotteryForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LotteryPratice.aspx.cs">
-      <DependentUpon>LotteryPratice.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LotteryPratice.aspx.designer.cs">
-      <DependentUpon>LotteryPratice.aspx</DependentUpon>
+    <Compile Include="MasterPages\Section2.Master.designer.cs">
+      <DependentUpon>Section2.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\UCNavMain.ascx.cs">
+      <DependentUpon>UCNavMain.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\UCNavMain.ascx.designer.cs">
+      <DependentUpon>UCNavMain.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VelocityCoders.LotteryPractice.DAL\VelocityCoders.LotteryPractice.DAL.csproj">
-      <Project>{b778c70a-c774-4f89-a993-0ab7ffff66b3}</Project>
-      <Name>VelocityCoders.LotteryPractice.DAL</Name>
+    <ProjectReference Include="..\VelocityCoders.LotteryPractice.BLL\VelocityCoders.LotteryPractice.BLL.csproj">
+      <Project>{7e3945e2-614f-48ec-ba62-41008fe94eae}</Project>
+      <Name>VelocityCoders.LotteryPractice.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\VelocityCoders.LotteryPractice.Models\VelocityCoders.LotteryPractice.Models.csproj">
       <Project>{776b3b8b-9a4e-4a27-9029-538ed0a86a6b}</Project>
       <Name>VelocityCoders.LotteryPractice.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

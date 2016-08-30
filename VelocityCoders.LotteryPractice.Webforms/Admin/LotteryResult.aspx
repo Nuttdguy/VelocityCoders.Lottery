@@ -1,15 +1,21 @@
-﻿<%@ Page Language="C#" Theme="Main" AutoEventWireup="true" CodeBehind="Powerball.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.Powerball" %>
+﻿<%@ Page Language="C#" Theme="Main" AutoEventWireup="true" CodeBehind="LotteryResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.LotteryResult" %>
+<%@ Register src="../UserControl/UCNavMain.ascx" tagname="UCNavMain" tagprefix="uc1" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>View Lottery Game Results</title>
+    <title>Check Lottery Game Results</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div id="wrapper">
-      <h1>View Lottery Game Results</h1>
+
+<%--      THIS WILL LIKELY BE REMOVED BECAUSE THERE SHOULD BE NO DIRECT LINK FOR CONSUMER VIEW OF RESULTS--%>
+      <uc1:UCNavMain ID="UCNavMain1" runat="server" />
+<%--      THIS WILL LIKELY BE REMOVED BECAUSE THERE SHOULD BE NO DIRECT LINK FOR CONSUMER VIEW OF RESULTS--%>
+
+      <h1>Check Lottery Game Results</h1>
       <h2>Game Abbreviation <br /><asp:Label runat="server" ID="lblLotteryGameAbbreviation" class="abbr" /></h2>
 
       <div class="pageContainer">

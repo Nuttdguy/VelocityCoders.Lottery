@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{776B3B8B-9A4E-4A27-9029-538ED0A86A6B}</ProjectGuid>
+    <ProjectGuid>{7E3945E2-614F-48EC-BA62-41008FE94EAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VelocityCoders.LotteryPractice.Models</RootNamespace>
-    <AssemblyName>VelocityCoders.LotteryPractice.Models</AssemblyName>
+    <RootNamespace>VelocityCoders.LotteryPractice.BLL</RootNamespace>
+    <AssemblyName>VelocityCoders.LotteryPractice.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,23 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\BallQuantity.cs" />
-    <Compile Include="Enums\BallType.cs" />
-    <Compile Include="Enums\QueryExecuteType.cs" />
-    <Compile Include="Extensions\Extension.cs" />
-    <Compile Include="GameResult.cs" />
-    <Compile Include="Collections\BaseCollection.cs" />
-    <Compile Include="Collections\ClassCollection.cs" />
-    <Compile Include="Enums\LotteryName.cs" />
-    <Compile Include="Enums\QuerySelectType.cs" />
-    <Compile Include="Enums\SitePages.cs" />
-    <Compile Include="Lottery.cs" />
-    <Compile Include="LotteryWinningNumber.cs" />
-    <Compile Include="PageTitleCaptionHelper.cs" />
+    <Compile Include="AddGameResultBLL.cs" />
+    <Compile Include="AddLotteryGameBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\PageLinks.cs" />
+    <ProjectReference Include="..\VelocityCoders.LotteryPractice.DAL\VelocityCoders.LotteryPractice.DAL.csproj">
+      <Project>{b778c70a-c774-4f89-a993-0ab7ffff66b3}</Project>
+      <Name>VelocityCoders.LotteryPractice.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VelocityCoders.LotteryPractice.Models\VelocityCoders.LotteryPractice.Models.csproj">
+      <Project>{776b3b8b-9a4e-4a27-9029-538ed0a86a6b}</Project>
+      <Name>VelocityCoders.LotteryPractice.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

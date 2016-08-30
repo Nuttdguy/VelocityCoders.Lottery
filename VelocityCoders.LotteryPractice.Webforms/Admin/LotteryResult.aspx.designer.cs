@@ -10,7 +10,7 @@
 namespace VelocityCoders.LotteryPractice.Webforms.Admin {
     
     
-    public partial class Powerball {
+    public partial class LotteryResult {
         
         /// <summary>
         /// form1 control.
@@ -20,6 +20,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// UCNavMain1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VelocityCoders.LotteryPractice.Webforms.UserControl.UCNavMain UCNavMain1;
         
         /// <summary>
         /// lblLotteryGameAbbreviation control.

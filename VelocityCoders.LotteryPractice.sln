@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityCoders.LotteryPract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityCoders.LotteryPractice.DAL", "VelocityCoders.LotteryPractice.DAL\VelocityCoders.LotteryPractice.DAL.csproj", "{B778C70A-C774-4F89-A993-0AB7FFFF66B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelocityCoders.LotteryPractice.BLL", "VelocityCoders.LotteryPractice.BLL\VelocityCoders.LotteryPractice.BLL.csproj", "{7E3945E2-614F-48EC-BA62-41008FE94EAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B778C70A-C774-4F89-A993-0AB7FFFF66B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B778C70A-C774-4F89-A993-0AB7FFFF66B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B778C70A-C774-4F89-A993-0AB7FFFF66B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3945E2-614F-48EC-BA62-41008FE94EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3945E2-614F-48EC-BA62-41008FE94EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3945E2-614F-48EC-BA62-41008FE94EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3945E2-614F-48EC-BA62-41008FE94EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,7 +29,7 @@ namespace VelocityCoders.LotteryPractice.DAL
                             tmpItem = new LotteryWinningNumber();
                             while (myReader.Read())
                             {
-                                tmpItem.Add( FillDataRecord(myReader));
+                                //tmpItem.Add( FillDataRecord(myReader));
                             }
                             myReader.Close();
                         }

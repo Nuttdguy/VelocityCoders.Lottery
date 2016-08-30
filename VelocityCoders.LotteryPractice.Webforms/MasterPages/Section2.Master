@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Section2.master.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.MasterPages.Section2" %>
+<%@ Register src="../UserControl/UCNavMain.ascx" tagname="UCNavMain" tagprefix="uc1" %>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="Container" class="clearfix">
+
+      <%--BEGIN TOP-HEADER | NAVIGATION--%>
+      <uc1:UCNavMain ID="UCNavMain1" runat="server" />
+      <%--END TOP-HEADER | NAVIGATION--%>
+
+      <%--BEGIN CONTENT | MAIN --%>
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+      </asp:ContentPlaceHolder>
+      <%--END CONTENT | MAIN --%>
+
+             
+
+    </div>
+    </form>
+</body>
+</html>
