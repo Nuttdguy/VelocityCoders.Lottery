@@ -34,9 +34,7 @@ namespace VelocityCoders.LotteryPractice.BLL
                     total = 0;
                     return total;
             }
-            //return total = 0;
         }
-
 
 
     }

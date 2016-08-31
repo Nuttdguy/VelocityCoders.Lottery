@@ -24,13 +24,17 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         protected void btnSubmitResult(object sender, EventArgs e)
         {
-            //==  [1] NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
+            //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
             GameResultCollection CollectFormResult = new GameResultCollection();
-            int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpListGameName.SelectedValue.ToLower());
 
             //==  [2]. GO TO BLL
-            CaptureFormInputValues();
+            int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpListGameName.SelectedValue.ToLower());
 
+            //==  [3]. CAPTURE FORM RESULT  & 
+            for (int i = 0; i < totalGameBalls; i++)
+            {
+                CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
+            }
 
             //==  WORK ON MOVING CODE TO BUSINESS LOGIC LAYER  ==\\
             //GameResultCollection gameResultList = new GameResultCollection();
@@ -79,8 +83,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
-        //====== METHOD TO CAPTURE WEB-FORM INPUT  ========\\
-        private GameResult CaptureFormInputValues()
+        //==  [3]. METHOD TO CAPTURE WEB-FORM INPUT | RETURN NEW INSTANCE FOR EACH BALL ========\\
+        private GameResult CaptureFormInputValues(int totalGameBalls, int i)
         {
             GameResult theFormResult = new GameResult();
 
@@ -91,7 +95,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             int ballFour = BallNumber_4.Text.ToInt();
             int ballFive = BallNumber_5.Text.ToInt();
             int ballSix = SpecialBallNumber.Text.ToInt();
-            int ballSeven = drpListMultiplier.Text.ToInt();
+            int ballSeven = drpListMultiplier.SelectedValue.ToInt();
 
             //==  SET PROPERTY VALUES FOR INSTANCE OF "GAME CLASS"  ==//
             theFormResult.LotteryName = drpListGameName.SelectedValue;
@@ -115,29 +119,32 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                     break;
             }
 
+            //== [BLL INEFFICIENCY NOTE]. MOVING TO BLL WOULD REQUIRE TOO MANY
+            //   VALUES BEING PASSED AS PARAMETERS || WILL KEEP WITHIN THE UI LAYER
             //==  SET BALL TYPE I.E. REGULAR, POWERBALL, MEGABALL, ETC  ==\\
-            if (ballOne > 0 ) {
+            if (i == 0 ) {
                 theFormResult.BallNumber = ballOne;
                 theFormResult.BallTypeId = (int)BallType.Regularball;
             }
-            else if (ballTwo > 0 ) {
+            else if (i == 1 ) {
                 theFormResult.BallNumber = ballTwo;
                 theFormResult.BallTypeId = (int)BallType.Regularball;
             }
-            else if (ballThree > 0 ) {
+            else if (i == 2) {
                 theFormResult.BallNumber = ballThree;
                 theFormResult.BallTypeId = (int)BallType.Regularball;
             }
-            else if (ballFour > 0 ) {
+            else if (i == 3 ) {
                 theFormResult.BallNumber = ballFour;
                 theFormResult.BallTypeId = (int)BallType.Regularball;
             }
-            else if (ballFive > 0 ) {
+            else if (i == 4)
+            {
                 theFormResult.BallNumber = ballFive;
                 theFormResult.BallTypeId = (int)BallType.Regularball;
             }
                 //== CHECK BALL #6 || SPECIAL BALL TYPE
-            else if (ballSix > 0 )
+            else if (i == 5)
             {
                 switch(theFormResult.LotteryName)
                 {
