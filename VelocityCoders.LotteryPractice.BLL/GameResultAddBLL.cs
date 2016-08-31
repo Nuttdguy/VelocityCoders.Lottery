@@ -10,11 +10,11 @@ namespace VelocityCoders.LotteryPractice.BLL
     public static class GameResultAddBLL
     {
 
-        public static bool SaveGameResult(GameResult addGameResultData)
-        {
+        //public static int SaveGameResult(GameResult addGameResultData)
+        //{
 
-            return GameResultAddDAL.SaveGameResult(addGameResultData);
-        }
+        //    return GameResultAddDAL.SaveGameResult(addGameResultData);
+        //}
 
         //== [2]. GET THE NUMBER OF BALLS FOR THE SELECTED GAME
         public static int TotalOfGameBalls(string drpListGameName)
@@ -37,10 +37,30 @@ namespace VelocityCoders.LotteryPractice.BLL
         }
 
         //== [4]. RECIEVE COLLECTION OF OBJECTS WITH FORM RESULTS
-        public static void SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls)
+        public static int SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls)
         {
 
-            return GameResultAddDAL.SaveGameResult(CollectFormResult, totalGameBalls);
+            //==  GET THE LOTTERYID/GAMEID || IDENTIFY AND PASS TO DAL  ==\\
+            int gameId = 0;
+            if (CollectFormResult[totalGameBalls].LotteryName == GameName._Powerball)
+            {
+                gameId = (int)GameNameEnum.Powerball;
+            }
+            if (CollectFormResult[totalGameBalls].LotteryName == GameName._Megaball)
+            {
+                gameId = (int)GameNameEnum.Megaball;
+            }
+            if (CollectFormResult[totalGameBalls].LotteryName == GameName._Gopher5)
+            {
+                gameId = (int)GameNameEnum.Gopher5;
+            }
+            if (CollectFormResult[totalGameBalls].LotteryName == GameName._NorthstarCash)
+            {
+                gameId = (int)GameNameEnum.NorthstarCash;
+            }
+
+
+            return GameResultAddDAL.SaveGameResult(CollectFormResult, totalGameBalls, gameId);
 
         }
 

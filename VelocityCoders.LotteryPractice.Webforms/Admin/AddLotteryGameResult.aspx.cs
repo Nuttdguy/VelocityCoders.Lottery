@@ -37,7 +37,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             }
 
             //==  [4]. GO TO BLL
-            GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls);
+            int checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls-1);
 
 
             #region SECTION 1 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
