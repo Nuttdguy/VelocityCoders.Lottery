@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace VelocityCoders.LotteryPractice.DAL
 {
-    public class AddGameResultDAL
+    public class GameResultAddDAL
     {
         
         #region INSERT & UPDATE LOTTERY GAME

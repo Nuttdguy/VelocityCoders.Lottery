@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddGameResultBLL.cs" />
+    <Compile Include="GameResultAddBLL.cs" />
     <Compile Include="AddLotteryGameBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

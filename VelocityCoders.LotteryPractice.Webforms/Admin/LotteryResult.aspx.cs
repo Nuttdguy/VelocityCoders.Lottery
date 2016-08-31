@@ -29,22 +29,22 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                 {
                     case "powerball":
                         lblLotteryGameAbbreviation.Text = "PB";
-                        lblSelectedLotteryGameResult.Text = LotteryName.Powerball.ToString();
+                        lblSelectedLotteryGameResult.Text = GameName._Powerball;
                         lotteryGameImage.ImageUrl = "~/App_Themes/Main/images/powerballLogo.png";
                         break;
                     case "megaball":
                         lblLotteryGameAbbreviation.Text = "MB";
-                        lblSelectedLotteryGameResult.Text = LotteryName.Megaball.ToString();
+                        lblSelectedLotteryGameResult.Text = GameName._Megaball;
                         lotteryGameImage.ImageUrl = "~/App_Themes/Main/images/megaMillionsLogo.png";
                         break;
                     case "gopher5":
                         lblLotteryGameAbbreviation.Text = "G5";
-                        lblSelectedLotteryGameResult.Text = LotteryName.Gopher5.ToString();
+                        lblSelectedLotteryGameResult.Text = GameName._Gopher5;
                         lotteryGameImage.ImageUrl = "~/App_Themes/Main/images/gopher5Logo.png";
                         break;
                     case "northstarcash":
                         lblLotteryGameAbbreviation.Text = "NC";
-                        lblSelectedLotteryGameResult.Text = LotteryName.NorthstarCash.ToString();
+                        lblSelectedLotteryGameResult.Text = GameName._NorthstarCash;
                         lotteryGameImage.ImageUrl = "~/App_Themes/Main/images/northstarLogo.png";
                         break;
                     default:
