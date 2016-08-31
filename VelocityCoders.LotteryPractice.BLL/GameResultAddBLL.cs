@@ -37,7 +37,7 @@ namespace VelocityCoders.LotteryPractice.BLL
         }
 
         //== [4]. RECIEVE COLLECTION OF OBJECTS WITH FORM RESULTS
-        public static int SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls)
+        public static string SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls)
         {
 
             //==  GET THE LOTTERYID/GAMEID || IDENTIFY AND PASS TO DAL  ==\\
