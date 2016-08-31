@@ -36,6 +36,13 @@ namespace VelocityCoders.LotteryPractice.BLL
             }
         }
 
+        //== [4]. RECIEVE COLLECTION OF OBJECTS WITH FORM RESULTS
+        public static void SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls)
+        {
+
+            return GameResultAddDAL.SaveGameResult(CollectFormResult, totalGameBalls);
+
+        }
 
     }
 }

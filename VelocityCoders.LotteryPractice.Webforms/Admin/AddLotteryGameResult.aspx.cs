@@ -21,7 +21,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
         //========   CLICK-BUTTON EVENT HANDLER    ===========\\
-
+        //====  BEGIN || EVENT LOGIC FOR PROCESSING FRONT-END FORM  ====\\ 
         protected void btnSubmitResult(object sender, EventArgs e)
         {
             //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
@@ -30,12 +30,17 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             //==  [2]. GO TO BLL
             int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpListGameName.SelectedValue.ToLower());
 
-            //==  [3]. CAPTURE FORM RESULT  & 
+            //==  [3]. CAPTURE FORM RESULT & ADD EACH OBJECT INSTANCE TO COLLECTION
             for (int i = 0; i < totalGameBalls; i++)
             {
                 CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
             }
 
+            //==  [4]. GO TO BLL
+            GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls);
+
+
+            #region SECTION 1 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
             //==  WORK ON MOVING CODE TO BUSINESS LOGIC LAYER  ==\\
             //GameResultCollection gameResultList = new GameResultCollection();
             //List<string> displayResult = new List<string>();
@@ -52,9 +57,10 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
             //lblMessage.Text = string.Empty;
             //displayResultOnFrontPage(displayResult);
-
+            #endregion
         }
 
+        #region SECTION 2 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
         //=====  METHOD FOR GETTING BALL NUMBERS AND LOTTERY VALUES INTO A LIST ITEM  =====//
         protected string CompileList(GameResultCollection gameResultList, int i, int ballCount)
         {
@@ -82,6 +88,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             }
 
         }
+        #endregion
+
 
         //==  [3]. METHOD TO CAPTURE WEB-FORM INPUT | RETURN NEW INSTANCE FOR EACH BALL ========\\
         private GameResult CaptureFormInputValues(int totalGameBalls, int i)
@@ -171,27 +179,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
             return theFormResult;
         }
-
-        //protected GameResult CaptureFormValues(int i)
-        //{
-        //    GameResult addGameResultData = new GameResult();
-
-        //    addGameResultData.LotteryName = drpListGameName.SelectedValue;
-        //    addGameResultData.DrawDate = calDrawingDate.SelectedDate;
-        //    addGameResultData.Jackpot = txtJackpotAmount.Text;
-        //    if (i == 0) { addGameResultData.BallNumber = BallNumber_1.Text.ToString().ToInt(); }
-        //    if (i == 1) { addGameResultData.BallNumber = BallNumber_2.Text.ToString().ToInt(); }
-        //    if (i == 2) { addGameResultData.BallNumber = BallNumber_3.Text.ToString().ToInt(); }
-        //    if (i == 3) { addGameResultData.BallNumber = BallNumber_4.Text.ToString().ToInt(); }
-        //    if (i == 4) { addGameResultData.BallNumber = BallNumber_5.Text.ToString().ToInt(); }
-        //    if (i == 5) { addGameResultData.BallNumber = SpecialBallNumber.Text.ToString().ToInt(); }
-        //    if (i == 6) { addGameResultData.BallNumber = drpListMultiplier.SelectedValue.ToInt(); }
-
-        //    return addGameResultData;
-
-        //}
-
-
 
     }
 }
