@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Enums\BallQuantityEnum.cs" />
     <Compile Include="Enums\BallType.cs" />
+    <Compile Include="Enums\CostToPlayEnum.cs" />
     <Compile Include="Enums\QueryExecuteType.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="GameResult.cs" />

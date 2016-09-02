@@ -8,7 +8,7 @@ namespace VelocityCoders.LotteryPractice.Models
     {
         public int LotteryId { get; set; }
         public string LotteryName { get; set; }
-        public Boolean HasSpecialBall { get; set; }
-        public Boolean IsRegularBall { get; set; }
+        public bool HasSpecialBall { get; set; }
+        public bool IsRegularBall { get; set; }
     }
 }

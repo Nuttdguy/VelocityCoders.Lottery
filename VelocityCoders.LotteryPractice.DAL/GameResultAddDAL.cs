@@ -8,8 +8,8 @@ namespace VelocityCoders.LotteryPractice.DAL
 {
     public class GameResultAddDAL
     {
-        
-        #region INSERT & UPDATE LOTTERY GAME
+        //==  [5]. FROM BLL || INSERT 
+        #region INSERT LOTTERY GAME
         public static string SaveGameResult(GameResultCollection CollectFormResult, int totalGameBalls, int gameId)
         {
             #region ORDER OF UPDATE FOR SAVING GAME RESULTS
@@ -24,12 +24,11 @@ namespace VelocityCoders.LotteryPractice.DAL
             //== [6]. REPEAT [3] AND [4] AND [6] FOR EACH BALL
             #endregion
 
-            int insertCount = 0;
             int result = 0;
             string rowsAffected = "";
 
             QueryExecuteType queryId = QueryExecuteType.InsertItem;
-            if (CollectFormResult[insertCount].LotteryId > 0)
+            if (CollectFormResult[gameId].LotteryId > 0)
                 queryId = QueryExecuteType.UpdateItem;
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
@@ -41,41 +40,46 @@ namespace VelocityCoders.LotteryPractice.DAL
 
                     if (gameId > 0)
                         myCommand.Parameters.AddWithValue("@LotteryId", gameId);
-                    if (CollectFormResult[insertCount].Jackpot != null)
-                        myCommand.Parameters.AddWithValue("@Jackpot", CollectFormResult[insertCount].Jackpot);
-                    if (CollectFormResult[insertCount].DrawDate != null)
-                        myCommand.Parameters.AddWithValue("@DrawDate", CollectFormResult[insertCount].DrawDate);
+                    if (CollectFormResult[result].Jackpot != null)
+                        myCommand.Parameters.AddWithValue("@Jackpot", CollectFormResult[result].Jackpot);
+                    if (CollectFormResult[result].DrawDate != null)
+                        myCommand.Parameters.AddWithValue("@DrawDate", CollectFormResult[result].DrawDate);
                     //== RETURNS THE INT RESULT OF THE RECORD AFFECTED I.E. SINGLE VALUE PRIMARY KEY IN THIS CASE
                     myCommand.Parameters.Add(SqlHelperDAL.GetReturnParameterInt("ReturnValue"));
 
-                    myConnection.Open();
-                    myCommand.ExecuteNonQuery(); //==  EXECUTES AND SUCCESSFULLY INSERTS  ==\\
+                    if (result == 0) { myConnection.Open(); }
+                    myCommand.ExecuteNonQuery(); 
 
                     result = (int)myCommand.Parameters["@ReturnValue"].Value;
-                    rowsAffected += "|| Lottery Drawing " + result;
+                    rowsAffected += " || Lottery Drawing " + result;
                 }
-                using (SqlCommand myCommand2 = new SqlCommand("usp_ExecuteWinningNumber", myConnection))
+                for (int i = 0; i <= totalGameBalls; i++)
                 {
-                    myCommand2.CommandType = CommandType.StoredProcedure;
-                    myCommand2.Parameters.AddWithValue("QueryId", queryId);
+                    using (SqlCommand myCommand2 = new SqlCommand("usp_ExecuteWinningNumber", myConnection))
+                    {
+                        myCommand2.CommandType = CommandType.StoredProcedure;
+                        myCommand2.Parameters.AddWithValue("QueryId", queryId);
 
-                    if (gameId > 0)
-                        myCommand2.Parameters.AddWithValue("@LotteryDrawingId", result);
-                    if (CollectFormResult[insertCount].BallTypeId != 0)
-                        myCommand2.Parameters.AddWithValue("@BallTypeId", CollectFormResult[insertCount].BallTypeId);
-                    if (CollectFormResult[insertCount].BallNumber != 0)
-                        myCommand2.Parameters.AddWithValue("@BallNumber", CollectFormResult[insertCount].BallNumber);
+                        if (gameId > 0)
+                            myCommand2.Parameters.AddWithValue("@LotteryDrawingId", result);
+                        if (CollectFormResult[i].BallTypeId != 0)
+                            myCommand2.Parameters.AddWithValue("@BallTypeId", CollectFormResult[i].BallTypeId);
+                        if (CollectFormResult[i].BallNumber != 0)
+                            myCommand2.Parameters.AddWithValue("@BallNumber", CollectFormResult[i].BallNumber);
 
-                    myCommand2.Parameters.Add(SqlHelperDAL.GetReturnParameterInt("ReturnValue"));
+                        //myCommand2.Parameters.Add(SqlHelperDAL.GetReturnParameterInt("ReturnValue"));
+                        myCommand2.ExecuteNonQuery();
 
-                    myCommand2.ExecuteNonQuery();
+                        //if (i == totalGameBalls )
+                        //    result = (int)myCommand2.Parameters["@ReturnValue"].Value;
 
-                    result = (int)myCommand2.Parameters["@ReturnValue"].Value;
-                    rowsAffected += " || Winning Number Row " + result;
+                        rowsAffected += " || Winning Number Row " + result + "<br/>";
+                    }
                 }
                 myConnection.Close();
             }
 
+            //==  [6]. GO TO UI
             return rowsAffected;
                
         }

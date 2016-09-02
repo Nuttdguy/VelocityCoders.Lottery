@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameAddNewBLL.cs" />
     <Compile Include="GameResultAddBLL.cs" />
     <Compile Include="AddLotteryGameBLL.cs" />
+    <Compile Include="GameResultGetBLL.cs" />
+    <Compile Include="GameNameGetBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

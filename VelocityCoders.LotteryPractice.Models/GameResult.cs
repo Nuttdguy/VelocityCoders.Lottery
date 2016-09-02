@@ -10,6 +10,8 @@ namespace VelocityCoders.LotteryPractice.Models
         public string HowToPlay { get; set; }
         public string GameDescription { get; set; }
         public int BallTypeId { get; set; }
+        public int CostToPlay { get; set; }
+        public int LotteryDrawingId { get; set; }
         //=== ALL inherited properties ===\\
 
         //public int LotteryId { get; set; }

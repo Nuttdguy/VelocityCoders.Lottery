@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameAddNewDAL.cs" />
     <Compile Include="GameResultAddDAL.cs" />
     <Compile Include="AppConfiguration.cs" />
+    <Compile Include="GameResultGetDAL.cs" />
     <Compile Include="LotteryDAL.cs" />
     <Compile Include="LotteryWinningNumberDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,9 +9,12 @@ namespace VelocityCoders.LotteryPractice.DAL
     {
 
         #region GET LOTTERY COLLECTION
+
+        //== [2]. GET COLLECTION OF LOTTERY ITEMS
         public static LotteryCollection GetCollection()
         {
             LotteryCollection tempList = null;
+            
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
             {
@@ -19,6 +22,7 @@ namespace VelocityCoders.LotteryPractice.DAL
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
                     myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollection);
+                    //myCommand.Parameters.AddWithValue("@LotteryId", recordIndexStart);
 
                     myConnection.Open();
                     using (SqlDataReader myReader = myCommand.ExecuteReader())
@@ -30,11 +34,13 @@ namespace VelocityCoders.LotteryPractice.DAL
                             {
                                 tempList.Add(FillDataRecord(myReader));
                             }
+
                         }
                         myReader.Close();
                     }
                 }
             }
+            //== [3]. RETURN COLLECTION TO UI LAYER
             return tempList;
         }
 
@@ -52,6 +58,7 @@ namespace VelocityCoders.LotteryPractice.DAL
                 myObject.HasSpecialBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("HasSpecialBall"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("IsRegularBall")))
                 myObject.IsRegularBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("IsRegularBall"));
+
 
             return myObject;
         }

@@ -39,6 +39,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             //==  [4]. GO TO BLL
             string checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls-1);
 
+            //==  [6]. DISPLAY RESULT TO FRONT PAGE
             lblMessage.Text = checkResult;
 
             #region SECTION 1 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE

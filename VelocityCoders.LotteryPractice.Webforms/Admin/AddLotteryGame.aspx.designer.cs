@@ -22,6 +22,24 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.Label PageTitleCaption;
         
         /// <summary>
+        /// drpGameName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpGameName;
+        
+        /// <summary>
+        /// tbleViewForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater tbleViewForm;
+        
+        /// <summary>
         /// txtGameName control.
         /// </summary>
         /// <remarks>
@@ -31,13 +49,31 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtGameName;
         
         /// <summary>
-        /// txtGameAbbr control.
+        /// drpCostToPlay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGameAbbr;
+        protected global::System.Web.UI.WebControls.DropDownList drpCostToPlay;
+        
+        /// <summary>
+        /// checkboxHasSpecialBall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList checkboxHasSpecialBall;
+        
+        /// <summary>
+        /// checkBoxHasRegularBall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList checkBoxHasRegularBall;
         
         /// <summary>
         /// txtHowToPlay control.
@@ -49,13 +85,13 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtHowToPlay;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtGameDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtGameDescription;
         
         /// <summary>
         /// lblMessage control.

@@ -59,7 +59,7 @@ namespace VelocityCoders.LotteryPractice.BLL
                 gameId = (int)GameNameEnum.NorthstarCash;
             }
 
-
+            //== [5]. GO TO DAL 
             return GameResultAddDAL.SaveGameResult(CollectFormResult, totalGameBalls, gameId);
 
         }
