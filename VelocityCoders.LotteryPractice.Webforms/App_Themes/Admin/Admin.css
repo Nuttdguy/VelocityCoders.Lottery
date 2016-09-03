@@ -194,7 +194,8 @@ h1:after {
 .addGameContainer {
   display: none;
   min-height: 600px;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(57, 55, 74, 0.72);
+  color: #fff;
 }
 .addGameViewContainer ul,
 .addGameContainer ul {
@@ -280,9 +281,13 @@ h1:after {
 }
 .addGameViewContainer table {
   font-size: 1.2em;
+  text-align: center;
+}
+.addGameViewContainer tr:first-of-type {
+  font-weight: 700;
 }
 .addGameViewContainer td {
-  padding: 2px;
+  padding: 4px 4px;
 }
 /*====================================
         TEMP CONTROLS | REMOVE AFTER

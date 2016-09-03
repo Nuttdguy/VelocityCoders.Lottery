@@ -45,19 +45,30 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             BallNumberCollection BallCollection = new BallNumberCollection();
 
             int presentId = 1;
-            int drawId = (int)BallQuantityEnum.Seven * presentId;
+     
+            //int drawId = (int)BallQuantityEnum.Seven * presentId;
 
             for (int i = 0; i < gameResultCollection.Count; i++)
             {
+
+                int idDifference = presentId - gameResultCollection[i].LotteryDrawingId;
                 int currentId = gameResultCollection[i].LotteryDrawingId;
                 if (currentId == presentId)
                 {
                     BallCollection.Add(compileBallResult(gameResultCollection, i));
                     presentId += 1;
                 }
-                presentId = gameResultCollection[i].LotteryDrawingId + 1;
-            }
+                else if (idDifference == 1)
+                {
+                    presentId = gameResultCollection[i].LotteryDrawingId + 1;
+                }
+                else if (idDifference < 0)
+                {
+                    presentId = gameResultCollection[i].LotteryDrawingId;
+                    currentId = gameResultCollection[i].LotteryDrawingId;
+                }
 
+            }
 
 
             rptViewResult.DataSource = BallCollection;
@@ -176,41 +187,45 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         protected BallNumberResult compileBallResult(GameResultCollection gameResultCollection, int i)
         {
-            int ballCount = (int)BallQuantityEnum.Seven;
+            int ballCount;
             BallNumberResult tmpObject = new BallNumberResult();
 
-            int m = 0;
-            if (m == 0) { m = i; }
-            
+            int m;
+            m = i;
+
+            if (gameResultCollection[i].LotteryName == "Power Ball" || gameResultCollection[i].LotteryName == "Mega Ball")
+            {
+                ballCount = (int)BallQuantityEnum.Seven;
+            }
+            else
+                ballCount = (int)BallQuantityEnum.Five;
+
             for (int x = 0; x < ballCount; x++)
             {
                 if (x == 0)
                 {
-                    tmpObject.BallNumber1 = gameResultCollection[m].BallNumber.ToString();
-                    tmpObject.LotteryDrawingId = gameResultCollection[m].LotteryDrawingId.ToString().ToInt();
-                    tmpObject.DrawDate = gameResultCollection[m].DrawDate.ToString().ToDate();
-                    tmpObject.LotteryId = gameResultCollection[m].LotteryId.ToString().ToInt();
-                    tmpObject.LotteryName = gameResultCollection[m].LotteryName.ToString();
+                    tmpObject.BallNumber1 = gameResultCollection[m+x].BallNumber.ToString();
+                    tmpObject.LotteryDrawingId = gameResultCollection[m+x].LotteryDrawingId.ToString().ToInt();
+                    tmpObject.DrawDate = gameResultCollection[m+x].DrawDate;
+                    tmpObject.LotteryId = gameResultCollection[m+x].LotteryId.ToString().ToInt();
+                    tmpObject.LotteryName = gameResultCollection[m+x].LotteryName.ToString();
                 }
                 if (x == 1)
-                    tmpObject.BallNumber2 = gameResultCollection[m].BallNumber.ToString();
+                    tmpObject.BallNumber2 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 2)
-                    tmpObject.BallNumber3 = gameResultCollection[m].BallNumber.ToString();
+                    tmpObject.BallNumber3 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 3)
-                    tmpObject.BallNumber4 = gameResultCollection[m].BallNumber.ToString();
+                    tmpObject.BallNumber4 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 4)
-                    tmpObject.BallNumber5 = gameResultCollection[m].BallNumber.ToString();
+                    tmpObject.BallNumber5 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 5)
-                    if (gameResultCollection[m].LotteryName == "Power Ball" || gameResultCollection[m].LotteryName == "Mega Ball")
-                    {
-                        tmpObject.BallNumber6 = gameResultCollection[m].BallNumber.ToString();
-                    }
+                    tmpObject.BallNumber6 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 6)
-                    if (gameResultCollection[m].LotteryName == "Power Ball" || gameResultCollection[m].LotteryName == "Mega Ball")
+                    if((m+x) > ballCount)
                     {
-                        tmpObject.BallNumber7 = gameResultCollection[m].BallNumber.ToString();
+                        tmpObject.BallNumber7 = gameResultCollection[m+x-1].BallNumber.ToString();
                     }
-                m++;
+                    else tmpObject.BallNumber7 = gameResultCollection[m+x].BallNumber.ToString();
             }
 
             return tmpObject;

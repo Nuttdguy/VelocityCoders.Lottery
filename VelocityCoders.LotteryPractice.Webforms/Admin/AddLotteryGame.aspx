@@ -49,6 +49,7 @@
             <tr>
               <td>Game name</td>
               <td>Drawing date</td>
+              <td>Drawing ID</td>
               <td>Ball 1</td>
               <td>Ball 2</td>
               <td>Ball 3</td>
@@ -56,13 +57,13 @@
               <td>Ball 5</td>
               <td>Ball SP</td>
               <td>Ball X</td>
-              <td>Lottery Draw ID</td>
             </tr>
           </HeaderTemplate>
           <ItemTemplate>
             <tr>
               <td><%# Eval("LotteryName") %></td>
               <td><%# Eval("DrawDate") %></td>
+              <td><%# Eval("LotteryDrawingId") %></td>
               <td><%# Eval("BallNumber1") %></td>
               <td><%# Eval("BallNumber2") %></td>
               <td><%# Eval("BallNumber3") %></td>
@@ -70,7 +71,6 @@
               <td><%# Eval("BallNumber5") %></td>
               <td><%# Eval("BallNumber6") %></td>
               <td><%# Eval("BallNumber7") %></td>
-              <td><%# Eval("LotteryDrawingId") %></td>
             </tr>
           </ItemTemplate>
           </asp:Repeater>

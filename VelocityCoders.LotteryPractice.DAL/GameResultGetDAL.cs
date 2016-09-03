@@ -47,6 +47,7 @@ namespace VelocityCoders.LotteryPractice.DAL
         {
             GameResult myObject = new GameResult();
 
+
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("LotteryId")))
                 myObject.LotteryId = myDataRecord.GetInt32(myDataRecord.GetOrdinal("LotteryId"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("LotteryDrawingId")))
@@ -65,7 +66,6 @@ namespace VelocityCoders.LotteryPractice.DAL
                 myObject.IsRegularBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("IsRegularBall"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("HasSpecialBall")))
                 myObject.HasSpecialBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("HasSpecialBall"));
-
 
             return myObject;
         }

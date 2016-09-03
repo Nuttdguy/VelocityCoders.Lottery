@@ -11,7 +11,7 @@ namespace VelocityCoders.LotteryPractice.Models
         public string LotteryName { get; set; }
         public int LotteryDrawingId { get; set; }
         public int LotteryId { get; set; }
-        public DateTime DrawDate { get { return this.DrawDate; } set { this.DrawDate.ToShortDateString();  } }
+        public DateTime DrawDate { get; set; }
         public string BallNumber1 { set; get; }
         public string BallNumber2 { get; set; }
         public string BallNumber3 { get; set; }
