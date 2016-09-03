@@ -31,13 +31,13 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.DropDownList drpGameName;
         
         /// <summary>
-        /// tbleViewForm control.
+        /// rptViewResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater tbleViewForm;
+        protected global::System.Web.UI.WebControls.Repeater rptViewResult;
         
         /// <summary>
         /// txtGameName control.

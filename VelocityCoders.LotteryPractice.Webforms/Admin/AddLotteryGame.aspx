@@ -44,30 +44,35 @@
       <input type="checkbox" ID="checkBoxAddGame" />
       <div class="addGameViewContainer show hide">
         <table>
-          <asp:Repeater runat="server" ID="tbleViewForm">
+          <asp:Repeater runat="server" ID="rptViewResult">
             <HeaderTemplate>
-              <tr>
-                <td>Drawing date</td>
-                <td>Ball 1</td>
-                <td>Ball 2</td>
-                <td>Ball 3</td>
-                <td>Ball 4</td>
-                <td>Ball 5</td>
-                <td>Ball SP</td>
-                <td>Ball X</td>
-              </tr>
-            </HeaderTemplate>
-            <ItemTemplate>
-              <tr>
-                <td>col1</td>
-                <td>col2</td>
-                <td>col3</td>
-                <td>col4</td>
-                <td>col5</td>
-                <td>col6</td>
-                <td>col7</td>
-              </tr>
-            </ItemTemplate>
+            <tr>
+              <td>Game name</td>
+              <td>Drawing date</td>
+              <td>Ball 1</td>
+              <td>Ball 2</td>
+              <td>Ball 3</td>
+              <td>Ball 4</td>
+              <td>Ball 5</td>
+              <td>Ball SP</td>
+              <td>Ball X</td>
+              <td>Lottery Draw ID</td>
+            </tr>
+          </HeaderTemplate>
+          <ItemTemplate>
+            <tr>
+              <td><%# Eval("LotteryName") %></td>
+              <td><%# Eval("DrawDate") %></td>
+              <td><%# Eval("BallNumber1") %></td>
+              <td><%# Eval("BallNumber2") %></td>
+              <td><%# Eval("BallNumber3") %></td>
+              <td><%# Eval("BallNumber4") %></td>
+              <td><%# Eval("BallNumber5") %></td>
+              <td><%# Eval("BallNumber6") %></td>
+              <td><%# Eval("BallNumber7") %></td>
+              <td><%# Eval("LotteryDrawingId") %></td>
+            </tr>
+          </ItemTemplate>
           </asp:Repeater>
         </table> 
       </div> <%--  END  *****  VIEW GAME FORM  --%>
@@ -134,3 +139,14 @@
 
 </asp:Content>
         
+
+
+
+<%--              <td><asp:Label runat="server" ID="lblDrawingDate" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber1" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber2" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber3" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber4" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber5" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber6" /></td>
+              <td><asp:Label runat="server" ID="lblBallNumber7" /></td>--%>

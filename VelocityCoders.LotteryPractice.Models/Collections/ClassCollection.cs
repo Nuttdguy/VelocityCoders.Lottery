@@ -20,4 +20,9 @@ namespace VelocityCoders.LotteryPractice.Models
     {
 
     }
+
+    public class BallNumberCollection : BaseCollection<BallNumberResult>
+    {
+
+    }
 }

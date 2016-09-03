@@ -278,6 +278,12 @@ h1:after {
   border: 1px solid #000;
   background-color: transparent;
 }
+.addGameViewContainer table {
+  font-size: 1.2em;
+}
+.addGameViewContainer td {
+  padding: 2px;
+}
 /*====================================
         TEMP CONTROLS | REMOVE AFTER
 ==================================================*/

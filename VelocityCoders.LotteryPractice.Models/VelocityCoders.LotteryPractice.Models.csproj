@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BallNumberResult.cs" />
     <Compile Include="Enums\BallQuantityEnum.cs" />
     <Compile Include="Enums\BallType.cs" />
     <Compile Include="Enums\CostToPlayEnum.cs" />
