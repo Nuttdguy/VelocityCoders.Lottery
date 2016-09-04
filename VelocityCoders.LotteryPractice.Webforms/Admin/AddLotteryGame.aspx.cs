@@ -53,6 +53,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
                 int idDifference = presentId - gameResultCollection[i].LotteryDrawingId;
                 int currentId = gameResultCollection[i].LotteryDrawingId;
+
                 if (currentId == presentId)
                 {
                     BallCollection.Add(compileBallResult(gameResultCollection, i));
@@ -62,7 +63,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                 {
                     presentId = gameResultCollection[i].LotteryDrawingId + 1;
                 }
-                else if (idDifference < 0)
+                else if (idDifference <= 0)
                 {
                     presentId = gameResultCollection[i].LotteryDrawingId;
                     currentId = gameResultCollection[i].LotteryDrawingId;
@@ -190,8 +191,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             int ballCount;
             BallNumberResult tmpObject = new BallNumberResult();
 
-            int m;
-            m = i;
+            int m = i;
 
             if (gameResultCollection[i].LotteryName == "Power Ball" || gameResultCollection[i].LotteryName == "Mega Ball")
             {
@@ -221,7 +221,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                 if (x == 5)
                     tmpObject.BallNumber6 = gameResultCollection[m+x].BallNumber.ToString();
                 if (x == 6)
-                    if((m+x) > ballCount)
+                    if((m+x) >= gameResultCollection.Count)
                     {
                         tmpObject.BallNumber7 = gameResultCollection[m+x-1].BallNumber.ToString();
                     }
