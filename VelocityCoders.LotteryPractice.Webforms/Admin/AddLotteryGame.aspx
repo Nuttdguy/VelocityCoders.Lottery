@@ -39,7 +39,7 @@
       <input type="checkbox" ID="checkBoxAddGame" />
       <div class="addGameViewContainer show hide">
         <table>
-          <asp:Repeater runat="server" ID="rptViewResult">
+          <asp:Repeater runat="server" ID="rptViewResult" OnItemDataBound="rptViewResult_ItemDataBound">
             <HeaderTemplate>
             <tr>
               <td>Edit </td>
@@ -58,7 +58,7 @@
             <tr>
               <td class="editRecord">
                 <asp:LinkButton runat="server" Text="Edit" ID="EditButton" OnCommand="EditButton_Command" CommandName="EditButton"  CssClass="btn btnEdit"/>
-                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="DeleteButton_Command" CommandName="DeleteButton"  CssClass="btn btnDelete"/>
+                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="EditButton_Command" CommandName="DeleteButton"  CssClass="btn btnDelete"/>
               </td>
               <td><%# Eval("LotteryName") %></td>
               <td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>
@@ -126,6 +126,57 @@
       </div> <%--  END ADD GAME ***** ADD GAME FORM --%>
 
 
+      <%--  UPDATE GAME RESULT ***** ADD GAME FORM --%>
+      <input type="checkbox" ID="cancelCheckBox" />
+      <label class="cancel" for="cancelCheckBox">x</label>
+      <div class="editDrawingContainer cf">
+
+        <div id="editBallContainLeft">
+          <div>
+            <label>Game Name:</label>
+            <input type="text" value="LotteryId" />
+          </div>
+          <div>
+            <label>Drawing Date</label>
+            <input type="date" value="DrawDate" />
+          </div>
+          <asp:Button runat="server" ID="btnUpdate" Text="Update" OnClick="UpdateGameResult_ClickBtn" CssClass="btnUpdate" />
+        </div>
+
+        <div id="editBallContainRight">
+<%--          <input type="checkbox" ID="cancelCheckBox" />
+          <label class="cancel" for="cancelCheckBox">x</label>--%>
+          <div>
+            <label>Ball Number 1</label>
+            <input type="text" value="" class="editBall"/>
+          </div>
+          <div>
+            <label>Ball Number 2</label>
+            <input type="text" value="" class="editBall" />
+          </div>
+          <div>
+            <label>Ball Number 3</label>
+            <input type="text" value="" class="editBall"/>
+          </div>
+          <div>
+            <label>Ball Number 4</label>
+            <input type="text" value="" class="editBall"/>
+          </div>
+          <div>
+            <label>Ball Number 5</label>
+            <input type="text" value="" class="editBall" />
+          </div>
+          <div>
+            <label>Special Ball </label>
+            <input type="text" value="" class="editBall"/>
+          </div>
+          <div>
+            <label>Multiplier Ball</label>
+            <input type="text" value="" class="editBall"/>
+          </div>
+        </div>
+
+      </div> <%--  END UPDATE GAME RESULT ***** ADD GAME FORM --%>
 
 
     </div> <%--  END  *****  MAIN-FORM CONTENT --%>

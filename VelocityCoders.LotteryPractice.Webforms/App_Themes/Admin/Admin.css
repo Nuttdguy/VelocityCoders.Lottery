@@ -343,6 +343,117 @@ h1:after {
   background-color: aliceblue;
 }
 /*====================================
+        EDIT CONTAINER
+==================================================*/
+.editDrawingContainer {
+  position: relative;
+  top: -50px;
+  margin: auto;
+  min-height: 70vh;
+  width: 1180px;
+  display: block;
+  background: rgba(11, 11, 11, 0.95);
+  box-shadow: -2px 3px 5px rgba(102, 102, 102, 0.95);
+  padding-bottom: 40px;
+}
+.editDrawingContainer div {
+  padding-top: 6px;
+}
+.editDrawingContainer div input {
+  display: inline-block;
+  font-size: 1.15em;
+}
+.editDrawingContainer div label {
+  font-size: 1.3em;
+  text-align: left;
+  padding: 4px 32px;
+  color: #fff;
+}
+.editDrawingContainer #editBallContainRight {
+  /*border: 1px solid #fff;*/
+  position: absolute;
+  left: 30%;
+  box-sizing: border-box;
+  width: 70%;
+  height: 100%;
+  border-left: 1px solid rgba(255, 165, 0, 0.69);
+  /*#cancelCheckBox:checked ~ .editDrawingContainer {
+            display: none;
+        }*/
+  /*.cancel {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            z-index: 10;
+
+            display: block;
+            color: red;
+            width: 40px;
+            height: 40px;
+            border: 1px solid red;
+
+            font-size: 1.9em;
+            font-weight: 700;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .cancel:hover {
+            background-color: rgba(255, 0, 0, 0.71);
+            color: #fff;
+        }*/
+}
+.editDrawingContainer #editBallContainRight .editBall {
+  width: 80px;
+  height: 60px;
+}
+.editDrawingContainer #editBallContainRight label {
+  display: inline-block;
+  width: 180px;
+  padding: 12px 36px;
+}
+.editDrawingContainer #editBallContainRight input {
+  margin: 12px 0;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.6) 1px 2px 3px inset;
+  border: 2px solid #2c2cd5;
+}
+.editDrawingContainer #editBallContainRight input:hover {
+  border: 2px solid blue;
+}
+.editDrawingContainer #editBallContainLeft {
+  position: absolute;
+  left: 0;
+  /*border: 1px solid red;*/
+  box-sizing: border-box;
+  display: block;
+  min-height: 100%;
+  width: 30%;
+}
+.editDrawingContainer #editBallContainLeft label {
+  display: block;
+  padding: 12px 36px;
+}
+.editDrawingContainer #editBallContainLeft input {
+  width: 180px;
+  margin-left: 48px;
+  cursor: pointer;
+}
+.editDrawingContainer #editBallContainLeft .btnUpdate {
+  margin: 40px 0 0 40px;
+  background-color: transparent;
+  border: 1px solid orange;
+  color: #fff;
+  padding: 6px;
+}
+.editDrawingContainer #editBallContainLeft .btnUpdate:hover {
+  background-color: rgba(255, 165, 0, 0.69);
+}
+/*====================================
         TEMP CONTROLS | REMOVE AFTER
 ==================================================*/
 /*====================================
@@ -365,4 +476,38 @@ h1:after {
   font-size: 1.2em;
   padding: 8px;
   display: inline-block;
+}
+#cancelCheckBox:checked ~ .editDrawingContainer {
+  display: none;
+}
+#cancelCheckBox:checked ~ .cancel {
+  visibility: hidden;
+}
+#cancelCheckBox {
+  display: none!important;
+}
+.cancel {
+  font-size: 2em!important;
+  padding: 0px!important;
+}
+.cancel,
+#cancelCheckBox {
+  position: absolute;
+  right: 30px;
+  top: 170px;
+  z-index: 10;
+  display: block;
+  color: red;
+  width: 40px;
+  height: 40px;
+  border: 1px solid red;
+  font-weight: 700;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.cancel:hover {
+  background-color: rgba(255, 0, 0, 0.71);
+  color: #fff;
 }

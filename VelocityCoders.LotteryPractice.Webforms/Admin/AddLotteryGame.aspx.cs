@@ -5,6 +5,8 @@ using VelocityCoders.LotteryPractice.Models.Enums;
 using VelocityCoders.LotteryPractice.BLL;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using System.Web.UI;
+using System.Web;
 
 
 namespace VelocityCoders.LotteryPractice.Webforms.Admin
@@ -201,7 +203,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         protected void EditButton_Command(object sender, CommandEventArgs e)
         {
 
+            switch (e.CommandName)
+            {
+                case "EditButton":
+                    break;
+                case "DeleteButton":
+                    break;
+            }
 
+            #region TEST CODE
             //string output = "";
             //foreach (GameResult item in _BallCollection)
             //{
@@ -213,20 +223,57 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             //        output += item.LotteryName.ToString() + " || ";
             //        lblMessage.Text = output;
             //    }
-                    
-            //}
 
+            //}
+            #endregion
 
         }
 
-        protected void DeleteButton_Command(object sender, CommandEventArgs e)
+        protected void UpdateGameResult_ClickBtn(object sender, EventArgs e)
         {
 
         }
- 
+
+        protected void BindUpdateInfo(int drawId)
+        {
+
+        }
+
+        protected void DeleteLotteryDrawing(int drawId)
+        {
+
+        }
 
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
+
+        
+        
+        //==  SETS LOTTERYDRAWID FOR EACH EDIT|DELETE BUTTON >>  ON_LOAD OF REPEATER, THE LOTTERYDRAWINGID IS BEING ASSIGNED A VALUE FOR EACH BUTTON  ==//
+        protected void rptViewResult_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item )
+            {
+                BallNumberResult drawId = (BallNumberResult)e.Item.DataItem;
+
+                LinkButton editButton = (LinkButton)e.Item.FindControl("EditButton");
+                LinkButton deleteButton = (LinkButton)e.Item.FindControl("DeleteButton");
+
+                editButton.CommandArgument = drawId.LotteryDrawingId.ToString();
+                deleteButton.CommandArgument = drawId.LotteryDrawingId.ToString();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         //========   SHOW GAME RESULT DROP-DOWN | EDIT OR VIEW GAME   ============\\
         //protected void CaptureDrpGameName_Selected(object sender, EventArgs e)
@@ -258,6 +305,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             lblMessage.Text += testOutput;
             #endregion
         }
+
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
