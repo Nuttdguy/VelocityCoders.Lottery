@@ -14,12 +14,7 @@
     <div class="sideBarContainer addGame"  >
       <div class="sidebarSpacer"></div>
       <h2>View | Edit Game</h2>
-      <asp:DropDownList runat="server" ID="drpGameName" AutoPostBack="true"  OnSelectedIndexChanged="CaptureDrpGameName_Selected" >
-        <asp:ListItem Text="(Select a Game) " Value="" />
-        <asp:ListItem Text="Power Ball" Value="powerball" />
-        <asp:ListItem Text="Mega Ball" Value="megaball" />
-        <asp:ListItem Text="Gopher 5" Value="gopher5" />
-        <asp:ListItem Text="Northstar Cash" Value="northstarcash" />
+      <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
       </asp:DropDownList>
     </div> <%--  END SIDEBAR ***** VIEW GAME IN DATABASE --%>
 
@@ -47,9 +42,9 @@
           <asp:Repeater runat="server" ID="rptViewResult">
             <HeaderTemplate>
             <tr>
+              <td>Edit </td>
               <td>Game name</td>
               <td>Drawing date</td>
-              <td>Drawing ID</td>
               <td>Ball 1</td>
               <td>Ball 2</td>
               <td>Ball 3</td>
@@ -61,16 +56,19 @@
           </HeaderTemplate>
           <ItemTemplate>
             <tr>
+              <td class="editRecord">
+                <asp:LinkButton runat="server" Text="Edit" ID="EditButton" OnCommand="EditButton_Command" CommandName="EditButton"  CssClass="btn btnEdit"/>
+                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="DeleteButton_Command" CommandName="DeleteButton"  CssClass="btn btnDelete"/>
+              </td>
               <td><%# Eval("LotteryName") %></td>
-              <td><%# Eval("DrawDate") %></td>
-              <td><%# Eval("LotteryDrawingId") %></td>
-              <td><%# Eval("BallNumber1") %></td>
-              <td><%# Eval("BallNumber2") %></td>
-              <td><%# Eval("BallNumber3") %></td>
-              <td><%# Eval("BallNumber4") %></td>
-              <td><%# Eval("BallNumber5") %></td>
-              <td><%# Eval("BallNumber6") %></td>
-              <td><%# Eval("BallNumber7") %></td>
+              <td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>
+              <td><span class="ball"><%# Eval("BallNumber1") %></span></td>
+              <td><span class="ball"><%# Eval("BallNumber2") %></span></td>
+              <td><span class="ball"><%# Eval("BallNumber3") %></span></td>
+              <td><span class="ball"><%# Eval("BallNumber4") %></span></td>
+              <td><span class="ball"><%# Eval("BallNumber5") %></span></td>
+              <td><span class="ball ballSP"><%# Eval("BallNumber6") %></span></td>
+              <td><span class="ball ballX"><%# Eval("BallNumber7") %></span></td>
             </tr>
           </ItemTemplate>
           </asp:Repeater>
@@ -126,6 +124,9 @@
           <asp:Button runat="server" Text="Add Game" CssClass="btnAddGame" OnClick="BtnAddGame_Click" />
         </div>
       </div> <%--  END ADD GAME ***** ADD GAME FORM --%>
+
+
+
 
     </div> <%--  END  *****  MAIN-FORM CONTENT --%>
   </div>

@@ -4,6 +4,7 @@ using VelocityCoders.LotteryPractice.Models;
 using VelocityCoders.LotteryPractice.Models.Enums;
 using VelocityCoders.LotteryPractice.BLL;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 
 namespace VelocityCoders.LotteryPractice.Webforms.Admin
@@ -22,31 +23,38 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //========   PAGE PROPERTIES   ============\\
 
         private const string _PageTitle = "Add Game";
+        private GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
 
+        //.............  BEGIN SECTION
 
-        //========   GET LOTTERY DATA ON PAGE LOAD   =======\\
+        #region //========   GET LOTTERY DATA ON PAGE LOAD   =======\\
+
         protected void RetrieveGameDataOnLoad()
         {
             LotteryCollection gameCollection = GameNameGetBLL.GetGameCollection();
-            GameResultCollection gameResultCollection = GameResultGetBLL.GetGameResultCollection();
-            displayGameResults(gameResultCollection);
-            //testOutput(gameResultCollection);
+            displayGameResults(_BallCollection);
+            drpBoxGameName(gameCollection);
+
+            //=== Modify | Use property to get collection 
+            //GameResultCollection gameResultCollection = GameResultGetBLL.GetGameResultCollection();
+            //displayGameResults(gameResultCollection);
         }
 
+        #endregion
 
-        //.............  BEGIN SECTION
-        //========   DISPLAY COLLECTION OF RESULTS ON MAIN PAGE   ==========\\
+        //^^^^^^^^^^^^^^  END SECTION 
+
+
+        //.............  BEGIN SECTION  
+        #region  //========   DISPLAY COLLECTION OF RESULTS ON MAIN PAGE   ==========\\
 
         protected void displayGameResults(GameResultCollection gameResultCollection)
         {
-
-            
+ 
             //== CREATE A NEW COLLECTION INSTANCE TO CAPTURE BALLRESULT OBJECTS
             BallNumberCollection BallCollection = new BallNumberCollection();
 
             int presentId = 1;
-     
-            //int drawId = (int)BallQuantityEnum.Seven * presentId;
 
             for (int i = 0; i < gameResultCollection.Count; i++)
             {
@@ -71,118 +79,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
             }
 
-
             rptViewResult.DataSource = BallCollection;
             rptViewResult.DataBind();
-
-            #region WORKING SECTIONS
-
-            //int presentId = 1;
-
-            //for (int i = 0; i < gameResultCollection.Count; i++)
-            //{
-            //    int currentId = gameResultCollection[i].LotteryDrawingId;
-            //    if (currentId == presentId)
-            //    {
-            //        int m = 0;
-            //        for (int x = 0; x < ballCount; x++)
-            //        {
-            //            m++;
-            //        }
-            //        presentId = gameResultCollection[m].LotteryDrawingId;
-            //    }
-            //}
-
-            #endregion
-
-
-            #region
-
-
-            //foreach (GameResult item in gameResultCollection)
-            //{
-            //    ballList.Add(item.BallNumber.ToString());
-            //}
-
-            //for ( int i = 0; i < gameResultCollection.Count; i++ )
-            //{
-            //    lottoId = gameResultCollection[i].LotteryDrawingId.ToString().ToInt();
-            //    if ( lottoId == innerLottoId )
-            //    {
-            //        int num = 0;
-            //        for (int x = 0; x < ballCount; x++)
-            //        {
-            //            if (x == 0) { tmpDisplayList.Add(gameResultCollection[x].BallNumber = ballList[num].ToString().ToInt()); }
-            //            if (x == 1) { tmpDisplayList[i].BallNumber2 = ballList[num]; }
-            //            if (x == 2) { tmpDisplayList[i].BallNumber3 = ballList[num]; }
-            //            if (x == 3) { tmpDisplayList[i].BallNumber4 = ballList[num]; }
-            //            if (x == 4) { tmpDisplayList[i].BallNumber5 = ballList[num]; }
-            //            if (x == 5) { tmpDisplayList[i].BallNumber6 = ballList[num]; }
-            //            if (x == 6) { tmpDisplayList[i].BallNumber7 = ballList[num]; }
-            //            else num = x + num;
-            //        }
-            //        innerLottoId++;
-            //    }
-            //}
-
-            //for (int i = 0; i < tmpBallList.Count; i++)
-            //{
-            //    for (int x = 0; x < ballCount; x++)
-            //    {
-            //        tmpDisplayList[i].BallNumber1 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber2 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber3 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber4 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber5 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber6 = tmpBallList[x];
-            //        tmpDisplayList[i].BallNumber7 = tmpBallList[x];
-
-            //    }
-            //}
-
-            //if (item.LotteryDrawingId == lottoId)
-            //{
-            //    tmpList.Add(item.DrawDate.ToShortDateString());
-            //    tmpList.Add(item.LotteryDrawingId.ToString());
-            //    lottoId++;
-            //}
-
-            //int count = 0;
-            //for (int i = 0; i < listLength; i++)
-            //{
-
-            //    if (count != ballCount) {
-            //        for (var n = 0; n < ballCount; n++)
-            //        {
-            //            rptViewResult.DataSource = tmpList;
-            //            rptViewResult.DataBind();
-            //        }
-            //    }
-
-            //}
-
-
-            //if (x == 0)
-            //{
-            //    lblDrawingDate.Text = tmpList[x].DrawDate.ToShortDateString();
-            //    lblBallNumber1.Text = tmpList[x].BallNumber.ToString();
-            //}
-            //if (x == 1) { lblBallNumber2.Text = tmpList[x].BallNumber.ToString(); }
-            //if (x == 2) { lblBallNumber3.Text = tmpList[x].BallNumber.ToString(); }
-            //if (x == 3) { lblBallNumber4.Text = tmpList[x].BallNumber.ToString(); }
-            //if (x == 4) { lblBallNumber5.Text = tmpList[x].BallNumber.ToString(); }
-            //if (x == 5) { lblBallNumber6.Text = tmpList[x].BallNumber.ToString(); }
-            //if (x == 6) { lblBallNumber7.Text = tmpList[x].BallNumber.ToString(); }
-
-            //string DrawDate = tmpList[x].DrawDate.ToShortDateString();
-            //string BallNumber1 = tmpList[x].BallNumber.ToString();
-            //string BallNumber2 = tmpList[x].BallNumber.ToString();
-            //string BallNumber3 = tmpList[x].BallNumber.ToString();
-            //string BallNumber4 = tmpList[x].BallNumber.ToString();
-            //string BallNumber5 = tmpList[x].BallNumber.ToString();
-            //string BallNumber6 = tmpList[x].BallNumber.ToString();
-            //string BallNumber7 = tmpList[x].BallNumber.ToString();
-            #endregion
 
         }
 
@@ -231,23 +129,12 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             return tmpObject;
         }
 
-
-
-
-
-        //========   SHOW GAME RESULT DROP-DOWN | EDIT OR VIEW GAME   ============\\
-        protected void CaptureDrpGameName_Selected(object sender, EventArgs e)
-        {
-
-
-
-        }
+        #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
 
-
         //.............. BEGIN SECTION  
-        #region//========   CLICK-BUTTON || SECTION ADD NEW GAME   ===========\\
+        #region    //========   CLICK-BUTTON || SECTION ADD NEW GAME   ===========\\
 
         protected void BtnAddGame_Click(object sender, EventArgs e)
         {
@@ -287,13 +174,71 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
 
         #endregion
+        //^^^^^^^^^^^^^^  END SECTION
 
+        //.............. BEGIN SECTION  
+        #region   //========   DROP-DOWN LIST OF LOTTO-GAMES  ===========\\
+        protected void drpBoxGameName(LotteryCollection gameCollection)
+        {
+            List<Lottery> drpList = new List<Lottery>();
 
+            for (int i = 0; i < gameCollection.Count; i++)
+            {
+                drpList.Add(gameCollection[i]);
+            }
+
+            drpList.Insert(0, new Lottery { LotteryName = "(Select a game)", LotteryId = 0 });
+
+            drpGameName.DataSource = drpList;
+            drpGameName.DataBind();
+        }
+        #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
 
+        //.............. BEGIN SECTION  
+        #region EDIT AND DELETE EVENTS
+        protected void EditButton_Command(object sender, CommandEventArgs e)
+        {
+
+
+            //string output = "";
+            //foreach (GameResult item in _BallCollection)
+            //{
+            //    if (item.LotteryDrawingId == 1)
+            //    {
+            //        output = item.BallNumber.ToString() + " || ";
+            //        output += item.LotteryId.ToString() + " || ";
+            //        output += item.Jackpot.ToString() + " || ";
+            //        output += item.LotteryName.ToString() + " || ";
+            //        lblMessage.Text = output;
+            //    }
+                    
+            //}
+
+
+        }
+
+        protected void DeleteButton_Command(object sender, CommandEventArgs e)
+        {
+
+        }
+ 
+
+        #endregion
+        //^^^^^^^^^^^^^^  END SECTION
+
+        //========   SHOW GAME RESULT DROP-DOWN | EDIT OR VIEW GAME   ============\\
+        //protected void CaptureDrpGameName_Selected(object sender, EventArgs e)
+        //{
+
+
+        //}
+
+
+
         //.............. BEGIN SECTION
-        //==  USE TO TEST OUTPUT FROM DATABASE
+        #region //==  USE TO TEST OUTPUT FROM DATABASE
         protected void testOutput(GameResultCollection gameResultCollection)
         {
             #region //=== FOR TESTING OUTPUT OF SELECTION
@@ -313,7 +258,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             lblMessage.Text += testOutput;
             #endregion
         }
-
+        #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
 

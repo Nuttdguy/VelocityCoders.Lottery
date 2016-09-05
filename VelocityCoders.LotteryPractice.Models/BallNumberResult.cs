@@ -20,5 +20,7 @@ namespace VelocityCoders.LotteryPractice.Models
         public string BallNumber6 { get; set; }
         public string BallNumber7 { get; set; }
 
+
+
     }
 }
