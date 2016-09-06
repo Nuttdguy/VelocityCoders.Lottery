@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Admin | Add Lottery Game" Theme="Admin"  MasterPageFile="~/MasterPages/Section2.Master" CodeBehind="AddLotteryGame.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.AddLotteryGame"%>
+﻿<%@ Page Language="C#" Title="Admin | Add Lottery Game" Theme="Admin"  MasterPageFile="~/MasterPages/Section2.Master" MaintainScrollPositionOnPostback="true" CodeBehind="AddLotteryGame.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.AddLotteryGame"%>
 
 
 
@@ -34,7 +34,7 @@
 
       <%--  BEGIN  ====== VIEW GAME FORM  --%>
       <label for="checkBoxViewGame">VIEW GAME</label>
-      <input type="checkbox" ID="checkBoxViewGame" />
+      <input type="checkbox" ID="checkBoxViewGame" checked />
       <label for="checkBoxAddGame">ADD GAME</label> 
       <input type="checkbox" ID="checkBoxAddGame" />
       <div class="addGameViewContainer show hide">
@@ -42,6 +42,7 @@
           <asp:Repeater runat="server" ID="rptViewResult" OnItemDataBound="rptViewResult_ItemDataBound">
             <HeaderTemplate>
             <tr>
+              <td>ID</td>
               <td>Edit </td>
               <td>Game name</td>
               <td>Drawing date</td>
@@ -56,11 +57,12 @@
           </HeaderTemplate>
           <ItemTemplate>
             <tr>
+              <td><%# Eval("LotteryDrawingId") %></td>
               <td class="editRecord">
-                <asp:LinkButton runat="server" Text="Edit" ID="EditButton" OnCommand="EditButton_Command" CommandName="EditButton"  CssClass="btn btnEdit"/>
-                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="EditButton_Command" CommandName="DeleteButton"  CssClass="btn btnDelete"/>
+                <asp:LinkButton runat="server" Text="Edit" ID="EditButton" OnCommand="EditButton_Command" CommandName="EditButton" CssClass="btn btnEdit"/>
+                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="EditButton_Command" CommandName="DeleteButton_Command"  CssClass="btn btnDelete"/>
               </td>
-              <td><%# Eval("LotteryName") %></td>
+              <td><asp:Image runat="server" Width="120px" CssClass="GameLogo" ImageUrl='<%# Eval("ImageUrl") %>' /> </td>
               <td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>
               <td><span class="ball"><%# Eval("BallNumber1") %></span></td>
               <td><span class="ball"><%# Eval("BallNumber2") %></span></td>
@@ -133,46 +135,54 @@
 
         <div id="editBallContainLeft">
           <div>
-            <label>Game Name:</label>
-            <input type="text" value="LotteryId" />
+            <label>Game Name</label>
+            <asp:TextBox runat="server" ID="txtLotteryName" />
           </div>
           <div>
             <label>Drawing Date</label>
-            <input type="date" value="DrawDate" />
+            <asp:TextBox runat="server" Id="txtDrawDate"/>
+          </div>
+          <div>
+            <label>Jackpot</label>
+            <asp:TextBox runat="server" Id="txtJackpot"/>
+          </div>
+          <div>
+            <label>Drawing ID</label>
+            <asp:TextBox runat="server" Id="txtLotteryDrawingId" CssClass="txtDrawId"/>
           </div>
           <asp:Button runat="server" ID="btnUpdate" Text="Update" OnClick="UpdateGameResult_ClickBtn" CssClass="btnUpdate" />
         </div>
-
+        
         <div id="editBallContainRight">
 <%--          <input type="checkbox" ID="cancelCheckBox" />
           <label class="cancel" for="cancelCheckBox">x</label>--%>
           <div>
             <label>Ball Number 1</label>
-            <input type="text" value="" class="editBall"/>
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber1"/>
           </div>
           <div>
             <label>Ball Number 2</label>
-            <input type="text" value="" class="editBall" />
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber2"/>
           </div>
           <div>
             <label>Ball Number 3</label>
-            <input type="text" value="" class="editBall"/>
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber3"/>
           </div>
           <div>
             <label>Ball Number 4</label>
-            <input type="text" value="" class="editBall"/>
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber4"/>
           </div>
           <div>
             <label>Ball Number 5</label>
-            <input type="text" value="" class="editBall" />
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber5"/>
           </div>
           <div>
             <label>Special Ball </label>
-            <input type="text" value="" class="editBall"/>
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber6"/>
           </div>
           <div>
             <label>Multiplier Ball</label>
-            <input type="text" value="" class="editBall"/>
+            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber7"/>
           </div>
         </div>
 

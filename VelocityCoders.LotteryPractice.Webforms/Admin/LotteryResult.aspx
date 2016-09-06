@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Theme="Main" AutoEventWireup="true" CodeBehind="LotteryResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.LotteryResult" %>
+﻿<%@ Page Language="C#" Theme="Main" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="LotteryResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.LotteryResult" %>
 <%@ Register src="../UserControl/UCNavMain.ascx" tagname="UCNavMain" tagprefix="uc1" %>
 
 <!DOCTYPE html>

@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="GameAddNewBLL.cs" />
     <Compile Include="GameResultAddBLL.cs" />
-    <Compile Include="AddLotteryGameBLL.cs" />
+    <Compile Include="ModifyDrawingBLL.cs" />
     <Compile Include="GameResultGetBLL.cs" />
     <Compile Include="GameNameGetBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

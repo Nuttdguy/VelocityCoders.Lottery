@@ -49,6 +49,7 @@
     <Compile Include="LotteryWinningNumberDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelperDAL.cs" />
+    <Compile Include="ModifyDrawingDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VelocityCoders.LotteryPractice.Models\VelocityCoders.LotteryPractice.Models.csproj">

@@ -197,6 +197,10 @@ h1:after {
   /*background-color: rgba(57, 55, 74, 0.72);*/
   color: #000;
 }
+.addGameViewContainer .GameLogo,
+.addGameContainer .GameLogo {
+  max-width: 120px!important;
+}
 .addGameViewContainer ul,
 .addGameContainer ul {
   border-bottom: 3px solid #000;
@@ -346,10 +350,10 @@ h1:after {
         EDIT CONTAINER
 ==================================================*/
 .editDrawingContainer {
-  position: relative;
-  top: -50px;
+  position: fixed;
+  top: 500px;
   margin: auto;
-  min-height: 70vh;
+  min-height: 80vh;
   width: 1180px;
   display: block;
   background: rgba(11, 11, 11, 0.95);
@@ -434,6 +438,11 @@ h1:after {
   min-height: 100%;
   width: 30%;
 }
+.editDrawingContainer #editBallContainLeft .txtDrawId {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
 .editDrawingContainer #editBallContainLeft label {
   display: block;
   padding: 12px 36px;
@@ -477,22 +486,14 @@ h1:after {
   padding: 8px;
   display: inline-block;
 }
-#cancelCheckBox:checked ~ .editDrawingContainer {
-  display: none;
-}
-#cancelCheckBox:checked ~ .cancel {
-  visibility: hidden;
-}
-#cancelCheckBox {
-  display: none!important;
-}
 .cancel {
   font-size: 2em!important;
   padding: 0px!important;
+  display: none;
 }
 .cancel,
 #cancelCheckBox {
-  position: absolute;
+  position: fixed;
   right: 30px;
   top: 170px;
   z-index: 10;
@@ -511,3 +512,16 @@ h1:after {
   background-color: rgba(255, 0, 0, 0.71);
   color: #fff;
 }
+#cancelCheckBox {
+  visibility: hidden;
+}
+#cancelCheckBox:checked ~ .editDrawingContainer {
+  display: block;
+}
+#cancelCheckBox:checked ~ .cancel {
+  display: block;
+}
+/*#cancelCheckBox,
+.cancel {
+    display: block;
+}*/

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Add Game Result" Theme="Admin" AutoEventWireup="true" MasterPageFile="~/MasterPages/Section2.Master" CodeBehind="AddLotteryGameResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.AddLotteryGameResult" %>
+﻿<%@ Page Language="C#" Title="Add Game Result" MaintainScrollPositionOnPostback="true" Theme="Admin" AutoEventWireup="true" MasterPageFile="~/MasterPages/Section2.Master" CodeBehind="AddLotteryGameResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.AddLotteryGameResult" %>
 
 
 
