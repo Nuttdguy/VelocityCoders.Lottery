@@ -39,9 +39,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             displayGameResults(_BallCollection);
             drpBoxGameName(gameCollection);
 
-            //=== Modify | Use property to get collection 
-            //GameResultCollection gameResultCollection = GameResultGetBLL.GetGameResultCollection();
-            //displayGameResults(gameResultCollection);
+            //=== TEST OUTPUT
             testOutput(_BallCollection);
         }
 
@@ -161,6 +159,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
 
+
         //.............  BEGIN SECTION 
         #region  //=======  OVERLOAD || DISPLAY SINGLE RECORD FOR IN ORDER TO UPDATE RECORD  ============\\
 
@@ -171,6 +170,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             BallNumberCollection BallCollection = new BallNumberCollection();
 
             int presentId = 1;
+            int count = 0;
 
             for (int i = 0; i < gameResultCollection.Count; i++)
             {
@@ -192,34 +192,37 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                     presentId = gameResultCollection[i].LotteryDrawingId;
                     currentId = gameResultCollection[i].LotteryDrawingId;
                 }
-
+                count++;
             }
+
 
             //== Index offset: Repeater index value is +1 
-            if (drawId == 0)
-            {
-                drawId = drawId + 1;
-                txtLotteryDrawingId.Text = (BallCollection[drawId].LotteryDrawingId - 1).ToString();
-            }
-            else if ( drawId >= BallCollection.Count)
-            {
-                drawId = BallCollection.Count-1;
-                txtLotteryDrawingId.Text = (BallCollection[drawId].LotteryDrawingId).ToString();
-            }
-            else {
-                drawId = drawId - 1;
-                txtLotteryDrawingId.Text = (BallCollection[drawId].LotteryDrawingId - 1).ToString();
-            }
-            txtLotteryName.Text = BallCollection[drawId].LotteryName;
-            txtDrawDate.Text = BallCollection[drawId].DrawDate.ToShortDateString();
-            txtJackpot.Text = BallCollection[drawId].Jackpot;
-            txtBallNumber1.Text = BallCollection[drawId].BallNumber1;
-            txtBallNumber2.Text = BallCollection[drawId].BallNumber2;
-            txtBallNumber3.Text = BallCollection[drawId].BallNumber3;
-            txtBallNumber4.Text = BallCollection[drawId].BallNumber4;
-            txtBallNumber5.Text = BallCollection[drawId].BallNumber5;
-            txtBallNumber6.Text = BallCollection[drawId].BallNumber6;
-            txtBallNumber7.Text = BallCollection[drawId].BallNumber7;
+            //====   BUG: DRAWING-ID THAT IS DISPLAYED BECOMES INCORRECT WITH GAPS IN # SEQUENCE
+            // Check the difference between drawID and Current DrawId
+            //int drawDiff = 0;
+            //if (drawId < BallCollection.Count)
+            //    drawDiff = ((BallCollection[drawId].LotteryDrawingId) - drawId) + drawId;
+            //else if (drawId > BallCollection.Count)
+            //{
+            //    drawId = (BallCollection.Count - 1);
+            //    drawDiff = ((BallCollection[drawId].LotteryDrawingId) + drawId) - drawId;
+            //}
+
+            //if (drawId >= BallCollection.Count) { drawId = BallCollection.Count - 1; }
+            //else { drawId = drawId - 1; }
+
+            //txtLotteryName.Text = BallCollection[drawId].LotteryName;
+            //txtDrawDate.Text = BallCollection[drawId].DrawDate.ToShortDateString();
+            ////== NEED TO KEEP TRACK OF GAPS IN NUMBERING; THEN ADJUST TEXT OUTPUT; EACH GAP IS CAUSING +1
+            //txtLotteryDrawingId.Text = (BallCollection[drawId].LotteryDrawingId).ToString(); 
+            //txtJackpot.Text = BallCollection[drawId].Jackpot;
+            //txtBallNumber1.Text = BallCollection[drawId].BallNumber1;
+            //txtBallNumber2.Text = BallCollection[drawId].BallNumber2;
+            //txtBallNumber3.Text = BallCollection[drawId].BallNumber3;
+            //txtBallNumber4.Text = BallCollection[drawId].BallNumber4;
+            //txtBallNumber5.Text = BallCollection[drawId].BallNumber5;
+            //txtBallNumber6.Text = BallCollection[drawId].BallNumber6;
+            //txtBallNumber7.Text = BallCollection[drawId].BallNumber7;
 
         }
 
@@ -333,22 +336,23 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
+        
+        
 
         //.............. BEGIN SECTION  
         #region EDIT AND DELETE EVENTS
         protected void EditButton_Command(object sender, CommandEventArgs e)
         {
-            //== USE TO LOAD RESULT OF SELECTION ONTO DISPLAY
-            //== NEED THE FORMATTED VERSION -- ONE LOTTERY_DRAWING_ID AND ALL ASSCOCIATED BALLS
-
-            //== WHAT TOOLS ARE THERE TO CAPTURE VALUES ??
-            //== WHAT TOOLS ARE THERE TO SET VALUES ??
-            //  [1]. CREATE A METHOD TO GET RESULT OF LOTTERY_DRAWING_ID
+            GameResultCollection myResult = new GameResultCollection();
 
             switch (e.CommandName)
             {
                 case "EditButton":
-                    displayGameResults(_BallCollection, (e.CommandArgument.ToString().ToInt()));
+                    myResult = GameResultGetBLL.GetGameResultCollection(e.CommandArgument.ToString().ToInt());
+
+                    //== NEED A DIFFERENT REPEATER CONTROL ==\\
+                    rptModifyBallNumber.DataSource = myResult;
+                    rptModifyBallNumber.DataBind();
                     break;
                 case "DeleteButton":
                     DeleteLotteryDrawing(e.CommandArgument.ToString().ToInt());
@@ -436,10 +440,12 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         protected void rptViewResult_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
 
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem )
             {
+
                 BallNumberResult drawId = (BallNumberResult)e.Item.DataItem;
-                
+
+
                 LinkButton edit = (LinkButton)e.Item.FindControl("EditButton");
                 LinkButton delete = (LinkButton)e.Item.FindControl("DeleteButton");
 

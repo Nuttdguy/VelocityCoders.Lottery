@@ -13,6 +13,11 @@ namespace VelocityCoders.LotteryPractice.BLL
 
         }
 
+        public static GameResultCollection GetGameResultCollection(int drawId)
+        {
+            return GameResultGetDAL.GetGameResultCollection(drawId);
+        }
+
 
     }
 

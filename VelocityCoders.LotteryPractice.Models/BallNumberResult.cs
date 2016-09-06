@@ -11,9 +11,12 @@ namespace VelocityCoders.LotteryPractice.Models
         public string LotteryName { get; set; }
         public int LotteryDrawingId { get; set; }
         public int LotteryId { get; set; }
+        public int WinningNumberId { get; set; }
         public string ImageUrl { get; set; }
         public string Jackpot { get; set; }
         public DateTime DrawDate { get; set; }
+        public int BallNumber { get; set; }
+
         public string BallNumber1 { set; get; }
         public string BallNumber2 { get; set; }
         public string BallNumber3 { get; set; }

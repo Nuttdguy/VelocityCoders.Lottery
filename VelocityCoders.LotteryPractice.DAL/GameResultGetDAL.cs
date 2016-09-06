@@ -8,7 +8,43 @@ namespace VelocityCoders.LotteryPractice.DAL
 {
     public static class GameResultGetDAL
     {
+        //==  GET GAME COLLECTION BY DRAWID
 
+        public static GameResultCollection GetGameResultCollection(int drawId)
+        {
+            //=== [1]. WINNING NUMBER ID
+            //=== [2]. BALL NUMBER
+            GameResultCollection tmpList = null;
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_GetLottery", myConnection))
+                {
+                    myCommand.CommandType = CommandType.StoredProcedure;
+                    myCommand.Parameters.AddWithValue("@QueryId", (int)QuerySelectType.GetGameResultCollectionByDrawId);
+                    myCommand.Parameters.AddWithValue("@LotteryDrawingId", drawId);
+
+                    myConnection.Open();
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        if(myReader.HasRows)
+                        {
+                            tmpList = new GameResultCollection();
+                            while (myReader.Read())
+                            {
+                                tmpList.Add(FillDataRecord(myReader));
+                            }
+                        }
+                        myReader.Close();
+                    }
+                    myConnection.Close();
+                }
+            }
+            return tmpList;
+        }
+        
+
+        //==  GET GAME COLLECTION
         public static GameResultCollection GetGameResultCollection()
         {
             GameResultCollection tmpList = null;
@@ -19,7 +55,7 @@ namespace VelocityCoders.LotteryPractice.DAL
                 {
 
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetGameResultCollection);
+                    myCommand.Parameters.AddWithValue("@QueryId", (int)QuerySelectType.GetCollection);
 
                     myConnection.Open();
                     using (SqlDataReader myReader = myCommand.ExecuteReader())
@@ -47,7 +83,6 @@ namespace VelocityCoders.LotteryPractice.DAL
         {
             GameResult myObject = new GameResult();
 
-
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("LotteryId")))
                 myObject.LotteryId = myDataRecord.GetInt32(myDataRecord.GetOrdinal("LotteryId"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("LotteryDrawingId")))
@@ -58,6 +93,8 @@ namespace VelocityCoders.LotteryPractice.DAL
                 myObject.DrawDate = myDataRecord.GetDateTime(myDataRecord.GetOrdinal("DrawingDate"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("BallNumber")))
                 myObject.BallNumber = myDataRecord.GetInt32(myDataRecord.GetOrdinal("BallNumber"));
+            if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("WinningNumberId")))
+                myObject.WinningNumberId = myDataRecord.GetInt32(myDataRecord.GetOrdinal("WinningNumberId"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("BallTypeDescription")))
                 myObject.BallTypeDescription = myDataRecord.GetString(myDataRecord.GetOrdinal("BallTypeDescription"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("Jackpot")))
@@ -66,6 +103,15 @@ namespace VelocityCoders.LotteryPractice.DAL
                 myObject.IsRegularBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("IsRegularBall"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("HasSpecialBall")))
                 myObject.HasSpecialBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("HasSpecialBall"));
+
+            if (myObject.LotteryId == (int)GameNameEnum.Powerball)
+                myObject.ImageUrl = Images._Powerball;
+            if (myObject.LotteryId == (int)GameNameEnum.Megaball)
+                myObject.ImageUrl = Images._MegaMillions;
+            if (myObject.LotteryId == (int)GameNameEnum.Gopher5)
+                myObject.ImageUrl = Images._Gopher5;
+            if (myObject.LotteryId == (int)GameNameEnum.NorthstarCash)
+                myObject.ImageUrl = Images._NorthstarCash;
 
             return myObject;
         }

@@ -132,7 +132,6 @@
       <input type="checkbox" ID="cancelCheckBox" />
       <label class="cancel" for="cancelCheckBox">x</label>
       <div class="editDrawingContainer cf">
-
         <div id="editBallContainLeft">
           <div>
             <label>Game Name</label>
@@ -154,9 +153,18 @@
         </div>
         
         <div id="editBallContainRight">
-<%--          <input type="checkbox" ID="cancelCheckBox" />
-          <label class="cancel" for="cancelCheckBox">x</label>--%>
           <div>
+            <asp:Repeater runat="server" ID="rptModifyBallNumber">
+              <ItemTemplate>
+                <div>
+                  <label>Ball Number </label>
+                  <input type="text" value="<%# Eval("BallNumber") %>" class="editBall" ID="txtBallNumber1"/>
+                </div>
+              </ItemTemplate>
+            </asp:Repeater>
+          </div>
+
+<%--          <div>
             <label>Ball Number 1</label>
             <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber1"/>
           </div>
@@ -184,10 +192,9 @@
             <label>Multiplier Ball</label>
             <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber7"/>
           </div>
-        </div>
+        </div>--%>
 
       </div> <%--  END UPDATE GAME RESULT ***** ADD GAME FORM --%>
-
 
     </div> <%--  END  *****  MAIN-FORM CONTENT --%>
   </div>

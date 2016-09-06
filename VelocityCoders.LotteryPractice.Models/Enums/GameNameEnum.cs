@@ -1,6 +1,6 @@
 ﻿
 
-namespace VelocityCoders.LotteryPractice.Models.Enums
+namespace VelocityCoders.LotteryPractice.Models
 {
     public enum GameNameEnum
     {

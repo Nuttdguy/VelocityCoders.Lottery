@@ -57,6 +57,7 @@
     <Compile Include="PageTitleCaptionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\GameName.cs" />
+    <Compile Include="Structs\Images.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\PageLinks.cs" />
