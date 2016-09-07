@@ -6,8 +6,7 @@ using VelocityCoders.LotteryPractice.BLL;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using System.Web.UI;
-using System.Web;
+
 
 
 namespace VelocityCoders.LotteryPractice.Webforms.Admin
@@ -26,7 +25,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //========   PAGE PROPERTIES   ============\\
 
         private const string _PageTitle = "Add Game";
-        //private GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
 
 
 
@@ -36,20 +34,19 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         protected void RetrieveGameDataOnLoad()
         {
-            LotteryCollection gameCollection = GameNameGetBLL.GetGameCollection();
+            LotteryCollection LotteryNameCollection = LotteryName_Get.GetGameCollection();
+            //LotteryCollection gameCollection = GameNameGetBLL.GetGameCollection();
             GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
             displayGameResults(_BallCollection);
-            drpBoxGameName(gameCollection);
+            drpBoxGameName(LotteryNameCollection);
 
             //=== TEST OUTPUT
-            testOutput(_BallCollection);
+            //testOutput(_BallCollection);
         }
 
         #endregion
 
         //^^^^^^^^^^^^^^  END SECTION 
-
-
 
 
 
@@ -204,6 +201,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
+
         //..[4]............ BEGIN SECTION  
         #region   //========   DROP-DOWN LIST OF LOTTO-GAMES  ===========\\
         protected void drpBoxGameName(LotteryCollection gameCollection)
@@ -225,7 +223,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         
         
-
         //..[5]............ BEGIN SECTION  
         #region EDIT AND DELETE EVENT HANDLER
         protected void EditButton_Command(object sender, CommandEventArgs e)
@@ -353,10 +350,10 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
         //.............. BEGIN SECTION 
-        #region DELETE METHOD || USE FOR 
+        #region DELETE METHOD 
         protected void DeleteLotteryDrawing(int drawId)
         {
-            //== DRAWID ORIGINATES FROM SECTION [5]
+
             int affectedRecord = ModifyDrawingBLL.DeleteDrawing(drawId);
 
             lblMessage.Text = affectedRecord.ToString();

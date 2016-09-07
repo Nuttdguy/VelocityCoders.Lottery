@@ -33,31 +33,50 @@ namespace VelocityCoders.LotteryPractice.DAL
         }
 
 
-        //== DELETE
-        public static int Delete(int drawId)
+        //== DELETE LOTTERY DRAWING RECORD BY ID
+        public static int Delete(int drawId, GameResultCollection numberCollection)
         {
-
             int affectedRecord = 0;
+            int deleteCount = numberCollection.Count;
 
             using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
             {
-                using (SqlCommand myCommand = new SqlCommand("usp_ExecuteWinningNumber", myConnection))
+                //== [1]. LOOP SUCCESSFUL FOR DELETING ALL RECORDS OF DRAWING
+                for (int i = 0; i < deleteCount; i++)
                 {
-                    myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("QueryId", QueryExecuteType.DeleteItem);
-                    myCommand.Parameters.AddWithValue("LotteryDrawingId", drawId);
-                    myCommand.Parameters.Add(SqlHelperDAL.GetReturnParameterInt("ReturnValue"));
+                    int winNumId = numberCollection[i].WinningNumberId;
+                    using (SqlCommand myCommand_1 = new SqlCommand("usp_ExecuteWinningNumber", myConnection))
+                    {
+                        myCommand_1.CommandType = CommandType.StoredProcedure;
+                        myCommand_1.Parameters.AddWithValue("@QueryId", (int)QueryExecuteType.DeleteItem);
+                        myCommand_1.Parameters.AddWithValue("@LotteryDrawingId", drawId);
+                        myCommand_1.Parameters.AddWithValue("@WinningNumberId", winNumId);
+                        myConnection.Open();
+                        myCommand_1.ExecuteNonQuery();
+
+                    }
+                    myConnection.Close();
+                }
+
+                //== [2]. REMOVE DRAWING ID 
+                using (SqlCommand myCommand_2 = new SqlCommand("usp_ExecuteLotteryDrawing", myConnection))
+                {
+                    myCommand_2.CommandType = CommandType.StoredProcedure;
+                    myCommand_2.Parameters.AddWithValue("@QueryId", (int)QueryExecuteType.DeleteItem);
+                    myCommand_2.Parameters.AddWithValue("@LotteryDrawingId", drawId);
+                    myCommand_2.Parameters.Add(SqlHelperDAL.GetReturnParameterInt("ReturnValue"));
 
                     myConnection.Open();
-                    myCommand.ExecuteNonQuery();
-
-                    affectedRecord = (int)myCommand.Parameters["@ReturnValue"].Value;
+                    myCommand_2.ExecuteNonQuery();
+                    affectedRecord = (int)myCommand_2.Parameters["@ReturnValue"].Value;
                 }
                 myConnection.Close();
             }
 
             return affectedRecord;
         }
+
+
 
     }
 }

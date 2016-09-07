@@ -9,6 +9,7 @@ namespace VelocityCoders.LotteryPractice.Models
         GetDrawingByLotteryName = 14,
         GetCollection = 20,
         GetGameResultCollectionByDrawId = 22,
+        GetLotteryNameCollection = 24,
         GetNext10 = 30
     }
 }

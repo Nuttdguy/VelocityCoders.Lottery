@@ -21,7 +21,7 @@ namespace VelocityCoders.LotteryPractice.DAL
                 using (SqlCommand myCommand = new SqlCommand("usp_GetLottery", myConnection))
                 {
                     myCommand.CommandType = CommandType.StoredProcedure;
-                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetCollection);
+                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetLotteryNameCollection);
                     //myCommand.Parameters.AddWithValue("@LotteryId", recordIndexStart);
 
                     myConnection.Open();

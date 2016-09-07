@@ -22,13 +22,13 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.Label PageTitleCaption;
         
         /// <summary>
-        /// drpListGameName control.
+        /// drpGameName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpListGameName;
+        protected global::System.Web.UI.WebControls.DropDownList drpGameName;
         
         /// <summary>
         /// calDrawingDate control.
@@ -37,7 +37,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calDrawingDate;
+        protected global::System.Web.UI.WebControls.TextBox calDrawingDate;
         
         /// <summary>
         /// txtJackpotAmount control.

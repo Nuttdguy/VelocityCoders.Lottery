@@ -14,11 +14,13 @@ namespace VelocityCoders.LotteryPractice.BLL
         }
 
 
-        //== DELETE RECORD 
+        //== DELETE RECORD BY DRAW-ID
         public static int DeleteDrawing(int drawId)
         {
-            return ModifyDrawingDAL.Delete(drawId);
+            GameResultCollection numberCollection = WinningNumberHelperDAL.WinningNumberId(drawId);
+            return ModifyDrawingDAL.Delete(drawId, numberCollection);
         }
+
 
     }
 }

@@ -14,6 +14,10 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             PageTitleCaption.Text = _PageTitleResult;
+            if (!IsPostBack)
+            {
+                drpBoxGameName();
+            }
         }
 
 
@@ -21,14 +25,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
         //========   CLICK-BUTTON EVENT HANDLER    ===========\\
-        //====  BEGIN || EVENT LOGIC FOR PROCESSING FRONT-END FORM  ====\\ 
+
+        #region SECTION 1 ||====== EVENT LOGIC FOR PROCESSING FORM =======||
         protected void btnSubmitResult(object sender, EventArgs e)
         {
             //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
             GameResultCollection CollectFormResult = new GameResultCollection();
 
             //==  [2]. GO TO BLL
-            int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpListGameName.SelectedValue.ToLower());
+            int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpGameName.SelectedValue.ToLower());
 
             //==  [3]. CAPTURE FORM RESULT & ADD EACH OBJECT INSTANCE TO COLLECTION
             for (int i = 0; i < totalGameBalls; i++)
@@ -61,8 +66,9 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             //displayResultOnFrontPage(displayResult);
             #endregion
         }
+        #endregion
 
-        #region SECTION 2 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
+        #region SECTION 2 ||======== DISPLAY RESULTS TO VERIFY INSERT VALUES
         //=====  METHOD FOR GETTING BALL NUMBERS AND LOTTERY VALUES INTO A LIST ITEM  =====//
         protected string CompileList(GameResultCollection gameResultList, int i, int ballCount)
         {
@@ -92,7 +98,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
         #endregion
 
-
+        #region SECTION 3 ||======= CAPTURE FORM INPUT DATA =======||
         //==  [3]. METHOD TO CAPTURE WEB-FORM INPUT | RETURN NEW INSTANCE FOR EACH BALL ========\\
         private GameResult CaptureFormInputValues(int totalGameBalls, int i)
         {
@@ -108,8 +114,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             int ballSeven = drpListMultiplier.SelectedValue.ToInt();
 
             //==  SET PROPERTY VALUES FOR INSTANCE OF "GAME CLASS"  ==//
-            theFormResult.LotteryName = drpListGameName.SelectedValue;
-            theFormResult.DrawDate = calDrawingDate.SelectedDate;
+            theFormResult.LotteryName = drpGameName.SelectedValue;
+            theFormResult.DrawDate = calDrawingDate.Text.ToDate();
             theFormResult.Jackpot = txtJackpotAmount.Text;
 
             //==  SET HASBALL PROPERTIES FOR INSTANCE OF GAME CLASS  ==//
@@ -181,6 +187,28 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
             return theFormResult;
         }
+
+        #endregion
+
+        #region SECTION 4 ||========= DROP LIST OF LOTTO-GAMES =========||
+        protected void drpBoxGameName()
+        {
+            LotteryCollection nameCollection = LotteryName_Get.GetGameCollection();
+            List<Lottery> drpList = new List<Lottery>();
+
+            for (int i = 0; i < nameCollection.Count; i++)
+            {
+                drpList.Add(nameCollection[i]);
+            }
+
+            drpList.Insert(0, new Lottery { LotteryName = "(Select a game)", LotteryId = 0 });
+
+            drpGameName.DataSource = drpList;
+            drpGameName.DataBind();
+        }
+
+        #endregion
+
 
     }
 }

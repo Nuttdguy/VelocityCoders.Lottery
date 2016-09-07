@@ -73,7 +73,7 @@ li {
     border-right: 3px solid #000;
 
     /*border: 1px solid #f18e01;*/
-    width: 70%;
+    width: 60%;
     height: 100%;
 }
 
@@ -83,7 +83,7 @@ li {
     box-sizing: border-box;
     /*border: 1px solid blue;*/
     float: right;
-    width: 30%;
+    width: 35%;
     height: 100%;
 
 }
@@ -132,7 +132,8 @@ h1:after {
 ==================================================*/
 
 .formContainer.gameResult {
-    padding: 1.3em 2em;
+    padding: 1.3em 2em 1.3em 3.5em;
+    min-height: 540px;
 
     div {
         display: block;
@@ -141,20 +142,20 @@ h1:after {
 
         .btnSubmitResult {
             position: relative;
-            width: 240px;
+            width: 180px;
             left: 278px;
 
-            margin-top: 21px;
+            margin-top: 48px;
             height: auto;
             background-color: aliceblue;
             border: 2px solid red;
             font-size: 1.3em;
-            padding: .15em;
+            padding: 8px;
         }
 
         .btnSubmitResult:hover {
             border: 2px solid red;
-            background-color: rgba(255, 0, 0, 0.61);
+            background-color: rgba(201, 225, 247, 0.61);
         }
     }
 
@@ -171,8 +172,13 @@ h1:after {
 
     input,
     select {
-        width: 272px;
+        font-size: 1.1em;
+        width: 220px;
         height: 36px;
+    }
+
+    .drpListMultiplier {
+        width: 180px;
     }
 
     textarea {

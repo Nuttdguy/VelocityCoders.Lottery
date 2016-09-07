@@ -16,15 +16,13 @@
     <div class="formContainer gameResult">
       <div>
         <label>Game Name: </label>
-          <asp:DropDownList runat="server" ID="drpListGameName" >
-            <asp:Listitem Text="(Select a lottery game)" Value="" />
-            <asp:ListItem Text="Power Ball" Value="powerball" />
+          <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
           </asp:DropDownList>
       </div>
 
       <div>
         <span class="lblCenter"><label class="lblCalDrawingDate">Drawing Date: </label>
-        <asp:Calendar runat="server" ID="calDrawingDate" /></span>
+        <asp:Textbox TextMode="Date" runat="server" ID="calDrawingDate" /></span>
       </div>
 
       <div>
@@ -34,9 +32,14 @@
 
       <div>
         <label>Multiplier: </label>
-          <asp:DropDownList runat="server" ID="drpListMultiplier" >
+          <asp:DropDownList runat="server" CssClass="drpListMultiplier" ID="drpListMultiplier" >
             <asp:ListItem Text="(Select a multiplier)" value="" />
+            <asp:ListItem Text="1" Value="1" />
             <asp:ListItem Text="2" Value="2" />
+            <asp:ListItem Text="3" Value="3" />
+            <asp:ListItem Text="4" Value="4" />
+            <asp:ListItem Text="5" Value="5" />
+            <asp:ListItem Text="6" Value="6" />
           </asp:DropDownList>
       </div>
 
