@@ -26,17 +26,18 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //========   PAGE PROPERTIES   ============\\
 
         private const string _PageTitle = "Add Game";
-        private GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
+        //private GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
 
 
 
-        //.............  BEGIN SECTION
+        //..[1]...........  BEGIN SECTION
 
         #region //========   GET LOTTERY DATA ON PAGE LOAD   =======\\
 
         protected void RetrieveGameDataOnLoad()
         {
             LotteryCollection gameCollection = GameNameGetBLL.GetGameCollection();
+            GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
             displayGameResults(_BallCollection);
             drpBoxGameName(gameCollection);
 
@@ -52,7 +53,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
 
-        //.............  BEGIN SECTION  
+        //..[2]...........  BEGIN SECTION  
         #region  //========   DISPLAY COLLECTION OF RESULTS ON MAIN PAGE   ==========\\
 
         protected void displayGameResults(GameResultCollection gameResultCollection)
@@ -160,15 +161,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
 
 
-
-        //.............  BEGIN SECTION 
-        #region  //=======  OVERLOAD || DISPLAY SINGLE RECORD FOR IN ORDER TO UPDATE RECORD  ============\\
-
-
-        #endregion
-        //^^^^^^^^^^^^^^  END SECTION
-
-        //.............. BEGIN SECTION  
+        //..[3]............ BEGIN SECTION  
         #region    //========   CLICK-BUTTON || SECTION ADD NEW GAME   ===========\\
 
         protected void BtnAddGame_Click(object sender, EventArgs e)
@@ -211,7 +204,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
 
-        //.............. BEGIN SECTION  
+        //..[4]............ BEGIN SECTION  
         #region   //========   DROP-DOWN LIST OF LOTTO-GAMES  ===========\\
         protected void drpBoxGameName(LotteryCollection gameCollection)
         {
@@ -233,8 +226,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         
         
 
-        //.............. BEGIN SECTION  
-        #region EDIT EVENTS
+        //..[5]............ BEGIN SECTION  
+        #region EDIT AND DELETE EVENT HANDLER
         protected void EditButton_Command(object sender, CommandEventArgs e)
         {
             GameResultCollection myResult = new GameResultCollection();
@@ -257,21 +250,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                     break;
             }
 
-            #region TEST CODE
-            //string output = "";
-            //foreach (GameResult item in _BallCollection)
-            //{
-            //    if (item.LotteryDrawingId == 1)
-            //    {
-            //        output = item.BallNumber.ToString() + " || ";
-            //        output += item.LotteryId.ToString() + " || ";
-            //        output += item.Jackpot.ToString() + " || ";
-            //        output += item.LotteryName.ToString() + " || ";
-            //        lblMessage.Text = output;
-            //    }
-
-            //}
-            #endregion
 
         }
 
@@ -293,19 +271,29 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //^^^^^^^^^^^^^^  END SECTION
 
 
-
-        //.............. BEGIN SECTION  
-        #region UPDATE EVENTS
+        //.............. BEGIN SECTION  !!!!!!!!!!!!!!!   DOES NOT WORK YET
+        #region UPDATE EVENT
         protected void UpdateGameResult_ClickBtn(object sender, EventArgs e)
         {
 
             List<GameResult> updateResult = new List<GameResult>();
             GameResult tmpObject = null;
 
+            /* DOES NOT CONTAIN ANY VALUE
+            List<int> rptTempItems = new List<int>(); 
+            foreach (RepeaterItem item in rptModifyBallNumber.Items )
+            {
+                TextBox lblID = (TextBox)item.FindControl("txtBallNumber");
+                int txtValue = lblID.Text.ToInt();
+                int txtId = lblID.ID.ToInt();
+                rptTempItems.Add(txtValue);
+            }
+            *///=== END
+
             string gameName = txtLotteryName.Text.ToLower();
             int ballCount = (int)BallQuantityEnum.Seven;
 
-            for ( int i = 0; i < ballCount; i++)
+            for (int i = 0; i < ballCount; i++)
             {
                 tmpObject = new GameResult();
                 if (gameName == GameName._Powerball || gameName == "power ball")
@@ -360,19 +348,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
-
-        //^^^^^^^^^^^^^^  END SECTION
-
-        protected void BindUpdateInfo(int drawId)
-        {
-            //== BIND THE UPDATED RESULTS FOR DISPLAY
-        }
+        //^^^^^^^^^^^^^^  END SECTION   !!!!!!!!!!!!!!!   DOES NOT WORK YET
+        #endregion
 
 
-        //== DOESN'T WORK YET
+        //.............. BEGIN SECTION 
+        #region DELETE METHOD || USE FOR 
         protected void DeleteLotteryDrawing(int drawId)
         {
-            //== DELETE THE LOTTERY DRAWING BY LOTTERY_DRAWING_ID
+            //== DRAWID ORIGINATES FROM SECTION [5]
             int affectedRecord = ModifyDrawingBLL.DeleteDrawing(drawId);
 
             lblMessage.Text = affectedRecord.ToString();
@@ -400,9 +384,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                 delete.CommandArgument = (drawId.LotteryDrawingId ).ToString();
             }
         }
-
-
-        //==  LOAD IMAGE
 
     
 

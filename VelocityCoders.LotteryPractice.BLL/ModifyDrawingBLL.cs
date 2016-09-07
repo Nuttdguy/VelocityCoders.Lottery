@@ -13,6 +13,8 @@ namespace VelocityCoders.LotteryPractice.BLL
             return ModifyDrawingDAL.Update(drawId, lotteryId, ballCount);
         }
 
+
+        //== DELETE RECORD 
         public static int DeleteDrawing(int drawId)
         {
             return ModifyDrawingDAL.Delete(drawId);

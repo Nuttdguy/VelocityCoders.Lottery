@@ -62,9 +62,10 @@
           <ItemTemplate>
             <tr>
               <td><%# Eval("LotteryDrawingId") %></td>
+        <%--FOR DELETE AND EDIT BUTTON HANDLERS--%>
               <td class="editRecord">
                 <asp:LinkButton runat="server" Text="Edit" ID="EditButton" OnCommand="EditButton_Command" CommandName="EditButton" CssClass="btn btnEdit"/>
-                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="EditButton_Command" CommandName="DeleteButton_Command"  CssClass="btn btnDelete"/>
+                <asp:LinkButton runat="server" Text="Delete" ID="DeleteButton" OnCommand="EditButton_Command" CommandName="DeleteButton"  CssClass="btn btnDelete"/>
               </td>
               <td><asp:Image runat="server" Width="120px" CssClass="GameLogo" ImageUrl='<%# Eval("ImageUrl") %>' /> </td>
               <td><%# DataBinder.Eval(Container.DataItem, "DrawDate", "{0:M/d/yyyy}") %></td>
@@ -155,7 +156,7 @@
             <asp:TextBox runat="server" Id="txtLotteryDrawingId" CssClass="txtDrawId"/>
           </div>
           <asp:Button runat="server" ID="btnUpdate" Text="Update" OnClick="UpdateGameResult_ClickBtn" CssClass="btnUpdate" />
-        </div>
+        </div> <%--  END EDITBALLCONTAIN-LEFT  --%>
         
         <div id="editBallContainRight">
           <div>
@@ -168,11 +169,10 @@
               </ItemTemplate>
             </asp:Repeater>
           </div>
-
+        </div> <%--  END EDITBALLCONTAIN-RIGHT  --%>
       </div> <%--  END UPDATE GAME RESULT ***** ADD GAME FORM --%>
 
     </div> <%--  END  *****  MAIN-FORM CONTENT --%>
-  </div>
   </div> <%--  END MAIN-FORM CONTENT ****** --%>
 
 
