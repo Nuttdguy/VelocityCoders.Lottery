@@ -5,6 +5,7 @@ using VelocityCoders.LotteryPractice.Models.Enums;
 using VelocityCoders.LotteryPractice.BLL;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using System.Web.UI;
 using System.Web;
 
@@ -163,113 +164,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //.............  BEGIN SECTION 
         #region  //=======  OVERLOAD || DISPLAY SINGLE RECORD FOR IN ORDER TO UPDATE RECORD  ============\\
 
-        protected void displayGameResults(GameResultCollection gameResultCollection, int drawId)
-        {
-
-            //== CREATE A NEW COLLECTION INSTANCE TO CAPTURE BALLRESULT OBJECTS
-            BallNumberCollection BallCollection = new BallNumberCollection();
-
-            int presentId = 1;
-            int count = 0;
-
-            for (int i = 0; i < gameResultCollection.Count; i++)
-            {
-
-                int idDifference = presentId - gameResultCollection[i].LotteryDrawingId;
-                int currentId = gameResultCollection[i].LotteryDrawingId;
-
-                if (currentId == presentId)
-                {
-                    BallCollection.Add(compileBallResult(gameResultCollection, i));
-                    presentId += 1;
-                }
-                else if (idDifference == 1)
-                {
-                    presentId = gameResultCollection[i].LotteryDrawingId + 1;
-                }
-                else if (idDifference <= 0)
-                {
-                    presentId = gameResultCollection[i].LotteryDrawingId;
-                    currentId = gameResultCollection[i].LotteryDrawingId;
-                }
-                count++;
-            }
-
-
-            //== Index offset: Repeater index value is +1 
-            //====   BUG: DRAWING-ID THAT IS DISPLAYED BECOMES INCORRECT WITH GAPS IN # SEQUENCE
-            // Check the difference between drawID and Current DrawId
-            //int drawDiff = 0;
-            //if (drawId < BallCollection.Count)
-            //    drawDiff = ((BallCollection[drawId].LotteryDrawingId) - drawId) + drawId;
-            //else if (drawId > BallCollection.Count)
-            //{
-            //    drawId = (BallCollection.Count - 1);
-            //    drawDiff = ((BallCollection[drawId].LotteryDrawingId) + drawId) - drawId;
-            //}
-
-            //if (drawId >= BallCollection.Count) { drawId = BallCollection.Count - 1; }
-            //else { drawId = drawId - 1; }
-
-            //txtLotteryName.Text = BallCollection[drawId].LotteryName;
-            //txtDrawDate.Text = BallCollection[drawId].DrawDate.ToShortDateString();
-            ////== NEED TO KEEP TRACK OF GAPS IN NUMBERING; THEN ADJUST TEXT OUTPUT; EACH GAP IS CAUSING +1
-            //txtLotteryDrawingId.Text = (BallCollection[drawId].LotteryDrawingId).ToString(); 
-            //txtJackpot.Text = BallCollection[drawId].Jackpot;
-            //txtBallNumber1.Text = BallCollection[drawId].BallNumber1;
-            //txtBallNumber2.Text = BallCollection[drawId].BallNumber2;
-            //txtBallNumber3.Text = BallCollection[drawId].BallNumber3;
-            //txtBallNumber4.Text = BallCollection[drawId].BallNumber4;
-            //txtBallNumber5.Text = BallCollection[drawId].BallNumber5;
-            //txtBallNumber6.Text = BallCollection[drawId].BallNumber6;
-            //txtBallNumber7.Text = BallCollection[drawId].BallNumber7;
-
-        }
-
-        protected BallNumberResult compileBallResult(GameResultCollection gameResultCollection, int i, int drawId)
-        {
-            int ballCount;
-            BallNumberResult tmpObject = new BallNumberResult();
-
-            int m = i;
-
-            if (gameResultCollection[i].LotteryName == "Power Ball" || gameResultCollection[i].LotteryName == "Mega Ball")
-            {
-                ballCount = (int)BallQuantityEnum.Seven;
-            }
-            else
-                ballCount = (int)BallQuantityEnum.Five;
-
-            for (int x = 0; x < ballCount; x++)
-            {
-                if (x == 0)
-                {
-                    tmpObject.BallNumber1 = gameResultCollection[m + x].BallNumber.ToString();
-                    tmpObject.LotteryDrawingId = gameResultCollection[m + x].LotteryDrawingId.ToString().ToInt();
-                    tmpObject.DrawDate = gameResultCollection[m + x].DrawDate;
-                    tmpObject.LotteryId = gameResultCollection[m + x].LotteryId.ToString().ToInt();
-                    tmpObject.LotteryName = gameResultCollection[m + x].LotteryName.ToString();
-                }
-                if (x == 1)
-                    tmpObject.BallNumber2 = gameResultCollection[m + x].BallNumber.ToString();
-                if (x == 2)
-                    tmpObject.BallNumber3 = gameResultCollection[m + x].BallNumber.ToString();
-                if (x == 3)
-                    tmpObject.BallNumber4 = gameResultCollection[m + x].BallNumber.ToString();
-                if (x == 4)
-                    tmpObject.BallNumber5 = gameResultCollection[m + x].BallNumber.ToString();
-                if (x == 5)
-                    tmpObject.BallNumber6 = gameResultCollection[m + x].BallNumber.ToString();
-                if (x == 6)
-                    if ((m + x) >= gameResultCollection.Count)
-                    {
-                        tmpObject.BallNumber7 = gameResultCollection[m + x - 1].BallNumber.ToString();
-                    }
-                    else tmpObject.BallNumber7 = gameResultCollection[m + x].BallNumber.ToString();
-            }
-
-            return tmpObject;
-        }
 
         #endregion
         //^^^^^^^^^^^^^^  END SECTION
@@ -340,7 +234,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         
 
         //.............. BEGIN SECTION  
-        #region EDIT AND DELETE EVENTS
+        #region EDIT EVENTS
         protected void EditButton_Command(object sender, CommandEventArgs e)
         {
             GameResultCollection myResult = new GameResultCollection();
@@ -353,6 +247,10 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                     //== NEED A DIFFERENT REPEATER CONTROL ==\\
                     rptModifyBallNumber.DataSource = myResult;
                     rptModifyBallNumber.DataBind();
+                    txtLotteryName.Text = myResult[0].LotteryName;
+                    txtDrawDate.Text = myResult[0].DrawDate.ToShortDateString();
+                    txtJackpot.Text = myResult[0].Jackpot;
+                    txtLotteryDrawingId.Text = myResult[0].LotteryDrawingId.ToString();
                     break;
                 case "DeleteButton":
                     DeleteLotteryDrawing(e.CommandArgument.ToString().ToInt());
@@ -377,16 +275,62 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
-        //===   STILL WORKING ON << COME BACK WITH FRESH MIND 
+        protected void rptModifyBallNumber_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+
+                GameResult drawId = (GameResult)e.Item.DataItem;
+                TextBox ball = (TextBox)e.Item.FindControl("txtBallNumber");
+
+                ball.Text = drawId.BallNumber.ToString();
+                ball.ID = drawId.WinningNumberId.ToString();
+            }
+        }
+
+        #endregion
+        //^^^^^^^^^^^^^^  END SECTION
+
+
+
+        //.............. BEGIN SECTION  
+        #region UPDATE EVENTS
         protected void UpdateGameResult_ClickBtn(object sender, EventArgs e)
         {
-            //== USE TO UPDATE RECORD AFTER MODIFICATION
-            //== NEED TO GET THE WINNING NUMBER ID'S FOR THE DRAWING ID
-            //  [1]. MAKE REQUEST TO BLL AND DAL
-            //  [2]. USE CAPTURED ID TO SEND LOTTERY_DRAWING_ID TO BLL
+
+            List<GameResult> updateResult = new List<GameResult>();
+            GameResult tmpObject = null;
+
+            string gameName = txtLotteryName.Text.ToLower();
+            int ballCount = (int)BallQuantityEnum.Seven;
+
+            for ( int i = 0; i < ballCount; i++)
+            {
+                tmpObject = new GameResult();
+                if (gameName == GameName._Powerball || gameName == "power ball")
+                {
+                    tmpObject.LotteryName = txtLotteryName.Text;
+                    tmpObject.DrawDate = txtDrawDate.Text.ToString().ToDate();
+                    tmpObject.Jackpot = txtJackpot.Text.ToString();
+                    tmpObject.LotteryDrawingId = txtLotteryDrawingId.Text.ToString().ToInt();
+                }
+                else if (gameName == GameName._Megaball || gameName == "mega ball")
+                    tmpObject.LotteryName = txtGameName.Text;
+                else if (gameName == GameName._Gopher5 || gameName == "gopher 5")
+                    tmpObject.LotteryName = txtGameName.Text;
+                else if (gameName == GameName._Powerball || gameName == "northstar cash")
+                    tmpObject.LotteryName = txtGameName.Text;
+                else
+                    break;
+
+                updateResult.Add(tmpObject);
+            }
+
+
             int drawingUpdateId = txtLotteryDrawingId.Text.ToInt();
             int lotteryId = 0;
-            int ballCount = 0;
+            //int ballCount = 0;
 
             if (lotteryId == (int)GameNameEnum.Powerball)
             {
@@ -415,6 +359,9 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             lblMessage.Text = "Return Value";
 
         }
+
+
+        //^^^^^^^^^^^^^^  END SECTION
 
         protected void BindUpdateInfo(int drawId)
         {

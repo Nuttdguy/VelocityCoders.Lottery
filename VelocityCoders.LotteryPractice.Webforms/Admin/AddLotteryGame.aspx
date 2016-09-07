@@ -25,12 +25,16 @@
 
       <!-- SAVE TABLE SUBNAV >> FOR FRONT-END IMPEMENTATION PURPOSES  -->
       <%--  BEGIN  ======  TABLE-SUB-NAV  --%>
-<%--      <div class="addGameViewContainer">    
+      <!--
+      <div class="addGameViewContainer">    
         <ul>
-          <li class="addFormLink"><a>Add</a></li><!--
-       --><li class="viewFormLink"><a>View</a></li>
+          <li class="addFormLink"><a>Add</a></li>
+          <li class="viewFormLink"><a>View</a></li>
         </ul>
-      </div>--%> <%--  END  *****  TABLE-SUB-NAV  --%>
+      </div>--> <%--  END  *****  TABLE-SUB-NAV  --%>
+
+
+
 
       <%--  BEGIN  ====== VIEW GAME FORM  --%>
       <label for="checkBoxViewGame">VIEW GAME</label>
@@ -132,6 +136,7 @@
       <input type="checkbox" ID="cancelCheckBox" />
       <label class="cancel" for="cancelCheckBox">x</label>
       <div class="editDrawingContainer cf">
+
         <div id="editBallContainLeft">
           <div>
             <label>Game Name</label>
@@ -154,51 +159,21 @@
         
         <div id="editBallContainRight">
           <div>
-            <asp:Repeater runat="server" ID="rptModifyBallNumber">
+            <asp:Repeater runat="server" ID="rptModifyBallNumber" OnItemDataBound="rptModifyBallNumber_ItemDataBound">
               <ItemTemplate>
                 <div>
                   <label>Ball Number </label>
-                  <input type="text" value="<%# Eval("BallNumber") %>" class="editBall" ID="txtBallNumber1"/>
+                  <asp:TextBox runat="server" ID="txtBallNumber" Cssclass="editBall"/>
                 </div>
               </ItemTemplate>
             </asp:Repeater>
           </div>
 
-<%--          <div>
-            <label>Ball Number 1</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber1"/>
-          </div>
-          <div>
-            <label>Ball Number 2</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber2"/>
-          </div>
-          <div>
-            <label>Ball Number 3</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber3"/>
-          </div>
-          <div>
-            <label>Ball Number 4</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber4"/>
-          </div>
-          <div>
-            <label>Ball Number 5</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber5"/>
-          </div>
-          <div>
-            <label>Special Ball </label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber6"/>
-          </div>
-          <div>
-            <label>Multiplier Ball</label>
-            <asp:TextBox runat="server"  CssClass="editBall" ID="txtBallNumber7"/>
-          </div>
-        </div>--%>
-
       </div> <%--  END UPDATE GAME RESULT ***** ADD GAME FORM --%>
 
     </div> <%--  END  *****  MAIN-FORM CONTENT --%>
   </div>
-
+  </div> <%--  END MAIN-FORM CONTENT ****** --%>
 
 
     <div class="formContainer" >
