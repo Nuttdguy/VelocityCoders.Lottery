@@ -22,6 +22,33 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin {
         protected global::System.Web.UI.WebControls.Label PageTitleCaption;
         
         /// <summary>
+        /// PageMessageArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PageMessageArea;
+        
+        /// <summary>
+        /// lblPageMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPageMessage;
+        
+        /// <summary>
+        /// MessageList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView MessageList;
+        
+        /// <summary>
         /// drpGameName control.
         /// </summary>
         /// <remarks>

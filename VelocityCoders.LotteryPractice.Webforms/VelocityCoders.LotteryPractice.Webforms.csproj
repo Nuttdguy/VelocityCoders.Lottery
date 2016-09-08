@@ -85,6 +85,7 @@
     <Content Include="App_Themes\Main\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="Error.aspx" />
     <Content Include="packages.config" />
     <Content Include="App_Themes\Main\main.less" />
     <Content Include="App_Themes\Admin\Admin.less" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="Admin\LotteryResult.aspx.designer.cs">
       <DependentUpon>LotteryResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Section2.Master.cs">
       <DependentUpon>Section2.Master</DependentUpon>

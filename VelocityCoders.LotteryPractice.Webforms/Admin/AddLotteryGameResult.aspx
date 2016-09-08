@@ -14,6 +14,19 @@
   <div id="ContentContainer" >
     <%--  BEGIN ======  INPUT FORM CONTAINER  --%>
     <div class="formContainer gameResult">
+      <asp:Panel runat="server" class="PageMessage" ID="PageMessageArea" Visible="false">
+        <asp:Label runat="server" ID="lblPageMessage" />
+        <asp:ListView runat="server" ID="MessageList" ItemPlaceholderID="MessageListPlaceHolder">
+          <LayoutTemplate>
+            <ul>
+              <asp:PlaceHolder runat="server" ID="MessageListPlaceHolder" />
+            </ul>
+          </LayoutTemplate>
+          <ItemTemplate>
+            <li><%# Eval("PropertyName") %>: <%# Eval("Message") %></li>
+          </ItemTemplate>
+        </asp:ListView>
+      </asp:Panel>
       <div>
         <label>Game Name: </label>
           <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
