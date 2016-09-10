@@ -14,7 +14,7 @@
     <div class="sideBarContainer addGame"  >
       <div class="sidebarSpacer"></div>
       <h2>View | Edit Game</h2>
-      <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
+      <asp:DropDownList runat="server" ID="drpGameName"  AutoPostBack="true" DataTextField="LotteryName" DataValueField="LotteryId"   OnSelectedIndexChanged="drpGameName_SelectedIndexChanged" >
       </asp:DropDownList>
     </div> <%--  END SIDEBAR ***** VIEW GAME IN DATABASE --%>
 

@@ -26,28 +26,40 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         //========   CLICK-BUTTON EVENT HANDLER    ===========\\
 
-        #region SECTION 1 ||====== EVENT LOGIC FOR PROCESSING FORM =======||
+        #region SECTION 1 ||======= [EVENT-BTN] PROCES FORM =======||
         protected void btnSubmitResult(object sender, EventArgs e)
         {
-            //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
-            GameResultCollection CollectFormResult = new GameResultCollection();
-
-            //==  [2]. GO TO BLL
-            int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpGameName.SelectedValue.ToLower());
-
-            //==  [3]. CAPTURE FORM RESULT & ADD EACH OBJECT INSTANCE TO COLLECTION
-            for (int i = 0; i < totalGameBalls; i++)
+            if (ValidateForm())
             {
-                CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
+                //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
+                GameResultCollection CollectFormResult = new GameResultCollection();
+
+                //==  [2]. GO TO BLL
+                //int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpGameName.SelectedValue.ToLower());
+
+                string selectedGame = drpGameName.SelectedItem.Text;
+                int totalGameBalls = 0;
+
+                if (selectedGame == "Power Ball" || selectedGame == "Mega Ball" )
+                    totalGameBalls = (int)BallQuantityEnum.Seven;
+                if (selectedGame == "Northstar Cash" || selectedGame == "Gopher 5")
+                    totalGameBalls = (int)BallQuantityEnum.Five;
+                
+                //==  [3]. CAPTURE FORM RESULT & ADD EACH OBJECT INSTANCE TO COLLECTION
+                for (int i = 0; i < totalGameBalls; i++)
+                {
+                    CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
+                }
+
+                //==  [4]. GO TO BLL
+                string checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls - 1);
+
+
+                //==  [6]. DISPLAY RESULT TO FRONT PAGE
+                lblMessage.Text = checkResult;
             }
 
-            //==  [4]. GO TO BLL
-            string checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls-1);
-
-            //==  [6]. DISPLAY RESULT TO FRONT PAGE
-            lblMessage.Text = checkResult;
-
-            #region SECTION 1 || LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
+            #region ||=== LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
             //==  WORK ON MOVING CODE TO BUSINESS LOGIC LAYER  ==\\
             //GameResultCollection gameResultList = new GameResultCollection();
             //List<string> displayResult = new List<string>();
@@ -68,7 +80,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
         #endregion
 
-        #region SECTION 2 ||======== DISPLAY RESULTS TO VERIFY INSERT VALUES
+        #region SECTION 2 ||======= [METHOD] DISPLAY RESULTS TO VERIFY INSERT VALUES
         //=====  METHOD FOR GETTING BALL NUMBERS AND LOTTERY VALUES INTO A LIST ITEM  =====//
         protected string CompileList(GameResultCollection gameResultList, int i, int ballCount)
         {
@@ -98,7 +110,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
         #endregion
 
-        #region SECTION 3 ||======= CAPTURE FORM INPUT DATA =======||
+        #region SECTION 3 ||======= [METHOD] = CAPTURE FORM INPUT DATA =======||
         //==  [3]. METHOD TO CAPTURE WEB-FORM INPUT | RETURN NEW INSTANCE FOR EACH BALL ========\\
         private GameResult CaptureFormInputValues(int totalGameBalls, int i)
         {
@@ -113,8 +125,15 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             int ballSix = SpecialBallNumber.Text.ToInt();
             int ballSeven = drpListMultiplier.SelectedValue.ToInt();
 
+            //==  CHECK FOR NO VALUES FOR BALL NUMBER
+            if (ballOne == 0 || ballTwo == 0 || ballThree == 0 || ballFour == 0 || ballFive == 0 || ballSix == 0 || ballSeven == 0)
+            {
+                DisplayLocalMessage("All balls must be greater than 0 ");
+                return theFormResult;
+            }
+            
             //==  SET PROPERTY VALUES FOR INSTANCE OF "GAME CLASS"  ==//
-            theFormResult.LotteryName = drpGameName.SelectedValue;
+            theFormResult.LotteryName = drpGameName.SelectedItem.Text;
             theFormResult.DrawDate = calDrawingDate.Text.ToDate();
             theFormResult.Jackpot = txtJackpotAmount.Text;
 
@@ -190,7 +209,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         #endregion
 
-        #region SECTION 4 ||========= DROP LIST OF LOTTO-GAMES =========||
+        #region SECTION 4 ||======= [METHOD] DROP LIST OF LOTTO-GAMES =========||
         protected void drpBoxGameName()
         {
             LotteryCollection nameCollection = LotteryName_Get.GetGameCollection();
@@ -205,6 +224,72 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
             drpGameName.DataSource = drpList;
             drpGameName.DataBind();
+        }
+
+        #endregion
+
+        #region SECTION 5 ||======= [METHOD] VALIDATION PANEL  =======||
+        private void DisplayLocalMessage(string message)
+        {
+            DisplayLocalMessage(message, new BrokenRuleCollection());
+        }
+
+        private void DisplayLocalMessage(string message, BrokenRuleCollection brokenRules)
+        {
+            MessageBrokenPanel.Visible = true;
+            MessageBrokenPanel.Message = message;
+
+            if (brokenRules.Count > 0)
+                MessageBrokenPanel.BrokenRules = brokenRules;
+
+            MessageBrokenPanel.Display();
+        }
+
+        #endregion
+
+        #region SECTON 6 ||=======  [METHOD] VALIDATE FORM FOR CORRECT DATA | UI VALIDATION =======|
+        private bool ValidateForm()
+        {
+            bool returnValue = true;
+            BrokenRuleCollection brokenRules = new BrokenRuleCollection();
+
+            //=====  DEFINE THE RULES IN WHICH THE FORM IS TO FOLLOW  =====\\
+            if (string.IsNullOrEmpty(BallNumber_1.Text.Trim()))
+                brokenRules.Add("Ball Number 1", "Required Field");
+            if (string.IsNullOrEmpty(BallNumber_2.Text.Trim()))
+                brokenRules.Add("Ball Number 2", "Required Field");
+            if (string.IsNullOrEmpty(BallNumber_3.Text.Trim()))
+                brokenRules.Add("Ball Number 3", "Required Field");
+            if (string.IsNullOrEmpty(BallNumber_4.Text.Trim()))
+                brokenRules.Add("Ball Number 4", "Required Field");
+            if (string.IsNullOrEmpty(BallNumber_5.Text.Trim()))
+                brokenRules.Add("Ball Number 5", "Required Field");
+            if (string.IsNullOrEmpty(SpecialBallNumber.Text.Trim()))
+                brokenRules.Add("Special Ball", "Required Field");
+            if (string.IsNullOrEmpty(calDrawingDate.Text))
+                brokenRules.Add("Drawing Date", "Required Field");
+            if (string.IsNullOrEmpty(txtJackpotAmount.Text.Trim()))
+                brokenRules.Add("Jackpot Amount", "Required Field");
+            if (drpListMultiplier.SelectedValue == "0")
+                brokenRules.Add("Multiplier", "Required Field");
+
+            //======  CHECK IF BROKEN RULES HAS ANY ITEMS  ======\\
+            if (brokenRules.Count > 0)
+            {
+
+                if (brokenRules.Count == 1)
+                {
+                    DisplayLocalMessage("There was an error processing your form. Please correct and try again.");
+                }
+                else
+                {
+                    DisplayLocalMessage("There were some errors processing your form. Please correct and try saving again.", brokenRules);
+                }
+                return false;
+            }
+            return returnValue;
+
+
         }
 
         #endregion

@@ -526,7 +526,11 @@ h1:after {
 .PageMessage span,
 .PageMessage li {
   color: #f1f1f1;
+  padding: 4px 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px 0;
+}
+.errorList {
+  display: block!important;
 }
 .cancel {
   font-size: 2em!important;

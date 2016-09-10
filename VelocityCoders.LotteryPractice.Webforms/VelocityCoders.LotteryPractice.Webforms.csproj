@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -86,6 +90,7 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="Error.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="App_Themes\Main\main.less" />
     <Content Include="App_Themes\Admin\Admin.less" />
@@ -102,6 +107,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UserControl\MessageBrokenRulesControl.ascx" />
     <Content Include="UserControl\UCNavMain.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -136,6 +142,9 @@
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\Section2.Master.cs">
       <DependentUpon>Section2.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,6 +153,13 @@
       <DependentUpon>Section2.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\MessageBrokenRulesControl.ascx.cs">
+      <DependentUpon>MessageBrokenRulesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\MessageBrokenRulesControl.ascx.designer.cs">
+      <DependentUpon>MessageBrokenRulesControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\UCNavMain.ascx.cs">
       <DependentUpon>UCNavMain.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

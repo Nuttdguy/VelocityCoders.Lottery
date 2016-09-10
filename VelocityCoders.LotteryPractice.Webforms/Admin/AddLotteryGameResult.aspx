@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" Title="Add Game Result" MaintainScrollPositionOnPostback="true" Theme="Admin" AutoEventWireup="true" MasterPageFile="~/MasterPages/Section2.Master" CodeBehind="AddLotteryGameResult.aspx.cs" Inherits="VelocityCoders.LotteryPractice.Webforms.Admin.AddLotteryGameResult" %>
 
+<%@ Register TagPrefix="ErrorPanel"  TagName="MessageBrokenRules" Src="~/UserControl/MessageBrokenRulesControl.ascx"%>
+
 
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="head" ></asp:Content>
@@ -14,7 +16,8 @@
   <div id="ContentContainer" >
     <%--  BEGIN ======  INPUT FORM CONTAINER  --%>
     <div class="formContainer gameResult">
-      <asp:Panel runat="server" class="PageMessage" ID="PageMessageArea" Visible="false">
+      <ErrorPanel:MessageBrokenRules runat="server" ID="MessageBrokenPanel"  Visible="false" />
+<%--      <asp:Panel runat="server" class="PageMessage" ID="PageMessageArea" Visible="true">
         <asp:Label runat="server" ID="lblPageMessage" />
         <asp:ListView runat="server" ID="MessageList" ItemPlaceholderID="MessageListPlaceHolder">
           <LayoutTemplate>
@@ -23,10 +26,10 @@
             </ul>
           </LayoutTemplate>
           <ItemTemplate>
-            <li><%# Eval("PropertyName") %>: <%# Eval("Message") %></li>
+            <li class="errorList"><%# Eval("PropertyName") %>: <%# Eval("Message") %></li>
           </ItemTemplate>
         </asp:ListView>
-      </asp:Panel>
+      </asp:Panel>--%>
       <div>
         <label>Game Name: </label>
           <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >

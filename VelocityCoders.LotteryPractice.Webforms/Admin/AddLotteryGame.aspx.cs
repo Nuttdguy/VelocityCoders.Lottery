@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using VelocityCoders.LotteryPractice.Models;
-using VelocityCoders.LotteryPractice.Models.Enums;
 using VelocityCoders.LotteryPractice.BLL;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
@@ -18,7 +17,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             PageTitleCaption.Text = _PageTitle;
             if (!IsPostBack)
             {
-                RetrieveGameDataOnLoad();
+                LoadGameNameDropList();
+                LoadGameDataOnPageLoad();
             }
         }
 
@@ -27,18 +27,14 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         private const string _PageTitle = "Add Game";
 
 
-
         //..[1]...........  BEGIN SECTION
 
-        #region //========   GET LOTTERY DATA ON PAGE LOAD   =======\\
+        #region //========  [METHOD] LOAD BALL & GAME COLLECTION   =======\\
 
-        protected void RetrieveGameDataOnLoad()
+        protected void LoadGameDataOnPageLoad()
         {
-            LotteryCollection LotteryNameCollection = LotteryName_Get.GetGameCollection();
-            //LotteryCollection gameCollection = GameNameGetBLL.GetGameCollection();
             GameResultCollection _BallCollection = GameResultGetBLL.GetGameResultCollection();
             displayGameResults(_BallCollection);
-            drpBoxGameName(LotteryNameCollection);
 
             //=== TEST OUTPUT
             //testOutput(_BallCollection);
@@ -46,12 +42,20 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         #endregion
 
+        #region //========  [METHOD] LOAD LOTTO GAME DROP-DOWN LIST  =======\\
+        protected void LoadGameNameDropList()
+        {
+            LotteryCollection LotteryNameCollection = LotteryName_Get.GetGameCollection();
+            drpBoxGameName(LotteryNameCollection);
+        }
+
+        #endregion
+
         //^^^^^^^^^^^^^^  END SECTION 
 
 
-
         //..[2]...........  BEGIN SECTION  
-        #region  //========   DISPLAY COLLECTION OF RESULTS ON MAIN PAGE   ==========\\
+        #region  //========   DISPLAY COLLECTION OF RESULTS ON LOAD  ==========\\
 
         protected void displayGameResults(GameResultCollection gameResultCollection)
         {
@@ -59,8 +63,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             //== CREATE A NEW COLLECTION INSTANCE TO CAPTURE BALLRESULT OBJECTS
             BallNumberCollection BallCollection = new BallNumberCollection();
 
+            //== FOR ALL LOTTERY DRAWING COLLECTIONS - FORMATTED TO DISPLAY 6 BALLS HORIZONTAL ==\\
             int presentId = 1;
-
             for (int i = 0; i < gameResultCollection.Count; i++)
             {
 
@@ -88,6 +92,51 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             rptViewResult.DataBind();
 
         }
+
+        #endregion
+
+        #region  //========   DISPLAY COLLECTION OF RESULTS ON DROP-DOWN SELECTION  ==========\\
+
+        protected void displayGameResults(int selectedLottoGame)
+        {
+
+            //== CREATE A NEW COLLECTION INSTANCE TO CAPTURE BALLRESULT OBJECTS
+            GameResultCollection gameResultCollection = GameResultGetBLL.GetGameResultCollection();
+            BallNumberCollection BallCollection = new BallNumberCollection();
+
+            //== FOR ALL LOTTERY DRAWING COLLECTIONS - FORMATTED TO DISPLAY 6 BALLS HORIZONTAL ==\\
+            int presentId = 1;
+            for (int i = 0; i < gameResultCollection.Count; i++)
+            {
+
+                int idDifference = presentId - gameResultCollection[i].LotteryDrawingId;
+                int currentId = gameResultCollection[i].LotteryDrawingId;
+
+                if (currentId == presentId && gameResultCollection[i].LotteryId == selectedLottoGame)
+                {
+                    BallCollection.Add(compileBallResult(gameResultCollection, i));
+                    presentId += 1;
+                }
+                else if (idDifference == 1)
+                {
+                    presentId = gameResultCollection[i].LotteryDrawingId + 1;
+                }
+                else if (idDifference <= 0)
+                {
+                    presentId = gameResultCollection[i].LotteryDrawingId;
+                    currentId = gameResultCollection[i].LotteryDrawingId;
+                }
+
+            }
+
+            rptViewResult.DataSource = BallCollection;
+            rptViewResult.DataBind();
+
+        }
+
+        #endregion
+
+        #region //========  HELPER > FORMAT AND COMPILE RESULTS  ========\\
 
         protected BallNumberResult compileBallResult(GameResultCollection gameResultCollection, int i)
         {
@@ -154,8 +203,18 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
 
         #endregion
-        //^^^^^^^^^^^^^^  END SECTION
 
+        #region //=======  [EVENT] SHOW ONLY SELECTED RESULT OF DROP-DOWN  =======\\
+        protected void drpGameName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedLottoGame = drpGameName.Text.ToInt();
+            displayGameResults(selectedLottoGame);
+
+        }
+
+        #endregion
+
+        //^^^^^^^^^^^^^^  END SECTION
 
 
         //..[3]............ BEGIN SECTION  
@@ -199,6 +258,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
 
         #endregion
+
         //^^^^^^^^^^^^^^  END SECTION
 
 
@@ -219,12 +279,12 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             drpGameName.DataBind();
         }
         #endregion
+
         //^^^^^^^^^^^^^^  END SECTION
 
-        
-        
+
         //..[5]............ BEGIN SECTION  
-        #region EDIT AND DELETE EVENT HANDLER
+        #region //=======  [EVENT] EDIT AND DELETE EVENT HANDLER  =======\\
         protected void EditButton_Command(object sender, CommandEventArgs e)
         {
             GameResultCollection myResult = new GameResultCollection();
@@ -250,6 +310,9 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
+        #endregion
+
+        #region //=======  [EVENT] BIND BALL NUMBER FOR EDITING  =======\\
         protected void rptModifyBallNumber_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
 
@@ -265,27 +328,17 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         }
 
         #endregion
+
         //^^^^^^^^^^^^^^  END SECTION
 
 
-        //.............. BEGIN SECTION  !!!!!!!!!!!!!!!   DOES NOT WORK YET
-        #region UPDATE EVENT
+        //.............. BEGIN SECTION 
+        #region //======= [EVENT] UPDATE DRAWING DATA  =======\\
         protected void UpdateGameResult_ClickBtn(object sender, EventArgs e)
         {
 
             List<GameResult> updateResult = new List<GameResult>();
             GameResult tmpObject = null;
-
-            /* DOES NOT CONTAIN ANY VALUE
-            List<int> rptTempItems = new List<int>(); 
-            foreach (RepeaterItem item in rptModifyBallNumber.Items )
-            {
-                TextBox lblID = (TextBox)item.FindControl("txtBallNumber");
-                int txtValue = lblID.Text.ToInt();
-                int txtId = lblID.ID.ToInt();
-                rptTempItems.Add(txtValue);
-            }
-            *///=== END
 
             string gameName = txtLotteryName.Text.ToLower();
             int ballCount = (int)BallQuantityEnum.Seven;
@@ -348,22 +401,24 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //^^^^^^^^^^^^^^  END SECTION   !!!!!!!!!!!!!!!   DOES NOT WORK YET
         #endregion
 
+        //^^^^^^^^^^^^^^  END SECTION
 
         //.............. BEGIN SECTION 
-        #region DELETE METHOD 
+        #region //=======  [EVENT] DELETE DRAWING  =======\\ 
         protected void DeleteLotteryDrawing(int drawId)
         {
 
             int affectedRecord = ModifyDrawingBLL.DeleteDrawing(drawId);
-
             lblMessage.Text = affectedRecord.ToString();
         }
 
         #endregion
+
         //^^^^^^^^^^^^^^  END SECTION
 
-        
-        
+
+        //.............. BEGIN SECTION 
+        #region //=======  [EVENT] REPEAT AND BIND 'EDIT' AND 'DELETE' BUTTON  =======\\
         //==  SETS LOTTERYDRAWID FOR EACH EDIT|DELETE BUTTON >>  ON_LOAD OF REPEATER, THE LOTTERYDRAWINGID IS BEING ASSIGNED A VALUE FOR EACH BUTTON  ==//
         protected void rptViewResult_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -382,23 +437,9 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             }
         }
 
-    
+        #endregion
 
-
-
-
-
-
-
-
-
-        //========   SHOW GAME RESULT DROP-DOWN | EDIT OR VIEW GAME   ============\\
-        //protected void CaptureDrpGameName_Selected(object sender, EventArgs e)
-        //{
-
-
-        //}
-
+        //^^^^^^^^^^^^^^  END SECTION
 
 
         //.............. BEGIN SECTION
@@ -422,6 +463,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             lblMessage.Text += testOutput;
             #endregion
         }
+
+
 
 
         #endregion

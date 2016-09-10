@@ -15,7 +15,6 @@ namespace VelocityCoders.LotteryPractice.BLL
         public static string GameToAdd(GameResult addGameFormData, int queryId)
         {
             string displayInsertedRecord = GameAddNewDAL.SaveNewGame(addGameFormData, queryId);
-
             return displayInsertedRecord;
 
         }
