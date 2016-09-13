@@ -20,7 +20,7 @@
 
       <div>
         <label>Game Name: </label>
-          <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
+          <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" AutoPostBack="true" OnSelectedIndexChanged="drpGameName_SelectedIndexChanged" >
           </asp:DropDownList>
       </div>
 
@@ -57,44 +57,14 @@
     <div class="sideBarContainer gameResult">
       <div class="sidebarSpacer"></div>
       <h2>Ball Numbers</h2>
-      <asp:Repeater runat="server" ID="rptBallNumber" OnItemDataBound="rptBallNumber_ItemDataBound" >
+      <asp:Repeater runat="server" ID="rptBallNumber" >
         <ItemTemplate>
           <div class="BallNumberContainer">
-            <label>Second Ball</label>
-            <asp:TextBox runat="server" ID="BallNumber" Text="" TextMode="Number" />
+            <label>Ball</label>
+            <asp:TextBox runat="server"  ID="BallNumber" Text="" TextMode="Number" />
           </div>
         </ItemTemplate>
       </asp:Repeater>
-
-<%--      <div class="BallNumberContainer">
-        <label>First Ball</label>
-        <asp:TextBox runat="server" ID="BallNumber_1" Text="" TextMode="Number" />
-      </div>
-
-      <div class="BallNumberContainer">
-        <label>Second Ball</label>
-        <asp:TextBox runat="server" ID="BallNumber_2" Text="" TextMode="Number" />
-      </div>
-
-      <div class="BallNumberContainer">
-        <label>Third Ball</label>
-        <asp:TextBox runat="server" ID="BallNumber_3" Text="" TextMode="Number" />
-      </div>
-
-      <div class="BallNumberContainer">
-        <label>Fourth Ball</label>
-        <asp:TextBox runat="server" ID="BallNumber_4" Text="" TextMode="Number" />
-      </div>
-
-      <div class="BallNumberContainer">
-        <label>Fifth Ball</label>
-        <asp:TextBox runat="server" ID="BallNumber_5" Text="" TextMode="Number" />
-      </div>
-
-      <div class="BallNumberContainer">
-        <label>Special Ball</label>
-        <asp:TextBox runat="server" ID="SpecialBallNumber" Text="" TextMode="Number" />
-      </div>--%>
 
     </div> <%--  END ***** SIDEBAR CONTAINER  --%>
 

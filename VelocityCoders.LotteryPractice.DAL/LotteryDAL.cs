@@ -7,6 +7,36 @@ namespace VelocityCoders.LotteryPractice.DAL
 {
     public class LotteryDAL
     {
+        #region GET LOTTERY ITEM
+        public static Lottery GetItem(int lotteryId)
+        {
+            Lottery tmpItem = null;
+
+            using (SqlConnection myConnection = new SqlConnection(AppConfiguration.ConnectionString))
+            {
+                using (SqlCommand myCommand = new SqlCommand("usp_GetLottery", myConnection))
+                {
+                    myCommand.CommandType = CommandType.StoredProcedure;
+
+                    myCommand.Parameters.AddWithValue("@QueryId", QuerySelectType.GetItem);
+                    myCommand.Parameters.AddWithValue("@LotteryId", lotteryId);
+
+                    myConnection.Open();
+                    using (SqlDataReader myReader = myCommand.ExecuteReader())
+                    {
+                        tmpItem = new Lottery();
+                        if (myReader.Read())
+                        {
+                            tmpItem = FillDataRecord(myReader);
+                        }
+                        myReader.Close();
+                    }
+                }
+            }
+            return tmpItem;
+        }
+
+        #endregion
 
         #region GET LOTTERY COLLECTION
 
@@ -58,6 +88,8 @@ namespace VelocityCoders.LotteryPractice.DAL
                 myObject.HasSpecialBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("HasSpecialBall"));
             if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("IsRegularBall")))
                 myObject.IsRegularBall = myDataRecord.GetBoolean(myDataRecord.GetOrdinal("IsRegularBall"));
+            if (!myDataRecord.IsDBNull(myDataRecord.GetOrdinal("NumberOfBalls")))
+                myObject.NumberOfBalls = myDataRecord.GetInt32(myDataRecord.GetOrdinal("NumberOfBalls"));
 
 
             return myObject;

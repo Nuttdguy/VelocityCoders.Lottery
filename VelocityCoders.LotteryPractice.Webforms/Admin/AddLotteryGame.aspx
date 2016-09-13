@@ -77,6 +77,10 @@
           <asp:TextBox runat="server" ID="txtGameName" />
         </div>
         <div>
+          <label class="firstLabel">Number Of Balls: </label>
+          <asp:TextBox runat="server" ID="txtNumberOfBalls" TextMode="Number" />
+        </div>
+        <div>
           <label>Cost to Play: </label>
           <asp:DropDownList runat="server" ID="drpCostToPlay" >
             <asp:ListItem Text="(Select option)" Value="" />

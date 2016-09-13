@@ -85,12 +85,12 @@ namespace VelocityCoders.LotteryPractice.BLL
                 {
                     if (item.BallNumber > 80)
                     {
-                        brokenRules.Add("Ball Number " + item.BallNumber + "must be less than 80");
+                        brokenRules.Add("Ball Number " + item.BallNumber + " must be less than 80");
                         returnValue = false;
                     }
                     else if (item.BallNumber < 0)
                     {
-                        brokenRules.Add("Ball number " + item.BallNumber + "must be greater than 0");
+                        brokenRules.Add("Ball number " + item.BallNumber + " must be greater than 0");
                         returnValue = false;
                     }
 

@@ -34,22 +34,17 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             {
                 //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
                 GameResultCollection CollectFormResult = new GameResultCollection();
+                int lotteryId = drpGameName.SelectedValue.ToInt();
 
+                Lottery lottery = LotteryBLL.GetItem(lotteryId);
+                int totalGameBalls = lottery.NumberOfBalls;
 
-                string selectedGame = drpGameName.SelectedItem.Text;
-                int totalGameBalls = 0;
-
-                if (selectedGame == "Power Ball" || selectedGame == "Mega Ball" )
-                    totalGameBalls = (int)BallQuantityEnum.Seven;
-                if (selectedGame == "Northstar Cash" || selectedGame == "Gopher 5")
-                    totalGameBalls = (int)BallQuantityEnum.Five;
                 
                 //==  [3]. CAPTURE FORM RESULT & ADD EACH OBJECT INSTANCE TO COLLECTION
                 for (int i = 0; i < totalGameBalls; i++)
                 {
-                    CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
+                    CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, lottery, i));
                 }
-
 
                 try
                 {
@@ -103,96 +98,26 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         #region SECTION 3 ||======= [METHOD] = CAPTURE FORM INPUT DATA =======||
         //==  [3]. METHOD TO CAPTURE WEB-FORM INPUT | RETURN NEW INSTANCE FOR EACH BALL ========\\
-        private GameResult CaptureFormInputValues(int totalGameBalls, int i)
+        private GameResult CaptureFormInputValues(int totalGameBalls, Lottery lottery, int i)
         {
             GameResult theFormResult = new GameResult();
 
-            //==  SET VARIABLES FOR EACH BALL  ==//
-            int ballOne = BallNumber_1.Text.ToInt();
-            int ballTwo = BallNumber_2.Text.ToInt();
-            int ballThree = BallNumber_3.Text.ToInt();
-            int ballFour = BallNumber_4.Text.ToInt();
-            int ballFive = BallNumber_5.Text.ToInt();
-            int ballSix = SpecialBallNumber.Text.ToInt();
-            int ballSeven = drpListMultiplier.SelectedValue.ToInt();
-
-            //==  CHECK FOR NO VALUES FOR BALL NUMBER
-            if (ballOne == 0 || ballTwo == 0 || ballThree == 0 || ballFour == 0 || ballFive == 0 || ballSix == 0 || ballSeven == 0)
-            {
-                DisplayLocalMessage("All balls must be greater than 0 ");
-                return theFormResult;
-            }
-            
             //==  SET PROPERTY VALUES FOR INSTANCE OF "GAME CLASS"  ==//
-            theFormResult.LotteryName = drpGameName.SelectedItem.Text;
+            theFormResult.LotteryName = lottery.LotteryName;
+            theFormResult.HasSpecialBall = lottery.HasSpecialBall;
+            theFormResult.IsRegularBall = lottery.IsRegularBall;
             theFormResult.DrawDate = calDrawingDate.Text.ToDate();
             theFormResult.Jackpot = txtJackpotAmount.Text;
 
-            //==  SET HASBALL PROPERTIES FOR INSTANCE OF GAME CLASS  ==//
-
-            //LotteryName testForSpecialBall = (LotteryName)Enum.Parse(typeof(LotteryName), theFormResult.LotteryName.ToString());
-            switch (theFormResult.LotteryName)
+            int idx = 0;
+            foreach (RepeaterItem item in rptBallNumber.Items)
             {
-                case GameName._Powerball:
-                case GameName._Megaball:
-                    theFormResult.HasSpecialBall = true;
-                    theFormResult.IsRegularBall = true;
-                    break;
-                case GameName._NorthstarCash:
-                case GameName._Gopher5:
-                    theFormResult.HasSpecialBall = false;
-                    theFormResult.IsRegularBall = true;
-                    break;
-            }
-
-            //== [BLL INEFFICIENCY NOTE]. MOVING TO BLL WOULD REQUIRE TOO MANY
-            //   VALUES BEING PASSED AS PARAMETERS || WILL KEEP WITHIN THE UI LAYER
-            //==  SET BALL TYPE I.E. REGULAR, POWERBALL, MEGABALL, ETC  ==\\
-            if (i == 0 ) {
-                theFormResult.BallNumber = ballOne;
-                theFormResult.BallTypeId = (int)BallType.Regularball;
-            }
-            else if (i == 1 ) {
-                theFormResult.BallNumber = ballTwo;
-                theFormResult.BallTypeId = (int)BallType.Regularball;
-            }
-            else if (i == 2) {
-                theFormResult.BallNumber = ballThree;
-                theFormResult.BallTypeId = (int)BallType.Regularball;
-            }
-            else if (i == 3 ) {
-                theFormResult.BallNumber = ballFour;
-                theFormResult.BallTypeId = (int)BallType.Regularball;
-            }
-            else if (i == 4)
-            {
-                theFormResult.BallNumber = ballFive;
-                theFormResult.BallTypeId = (int)BallType.Regularball;
-            }
-                //== CHECK BALL #6 || SPECIAL BALL TYPE
-            else if (i == 5)
-            {
-                switch(theFormResult.LotteryName)
+                TextBox ballNum = (TextBox)item.FindControl("BallNumber");
+                if (idx == i)
                 {
-                    case GameName._Powerball:
-                        theFormResult.BallNumber = ballSix;
-                        theFormResult.BallTypeId = (int)BallType.Powerball;
-                        break;
-                    case GameName._Megaball:
-                        theFormResult.BallNumber = ballSix;
-                        theFormResult.BallTypeId = (int)BallType.Megaball;
-                        break;
-                    default:
-                        theFormResult.BallNumber = ballSix;
-                        theFormResult.BallTypeId = (int)BallType.Specialball;
-                        break;
-                }  
-            }
-                //== CHECK BALL #7 || MULTIPLIER BALL TYPE
-            else 
-            {
-                theFormResult.BallNumber = ballSeven;
-                theFormResult.BallTypeId = (int)BallType.Multiplierball;
+                    theFormResult.BallNumber = ballNum.Text.ToInt();
+                }
+                idx++;
             }
 
             return theFormResult;
@@ -219,6 +144,24 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         #endregion
 
+        #region SECTION 4.1 ||======= [METHOD] REPEATER FOR NUMBER OF BALLS  =======||
+        protected void drpGameName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int lotteryId = drpGameName.SelectedValue.ToInt();
+            Lottery lottery = LotteryBLL.GetItem(lotteryId);
+            List<string> gameBallCount = new List<string>();
+
+            for (int i = 0; i < lottery.NumberOfBalls; i++)
+            {
+                gameBallCount.Add("");
+            }
+
+            rptBallNumber.DataSource = gameBallCount;
+            rptBallNumber.DataBind();
+            
+        }
+        #endregion
+
         #region SECTION 5 ||======= [METHOD] VALIDATION PANEL  =======||
         private void DisplayLocalMessage(string message)
         {
@@ -243,20 +186,19 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         {
             bool returnValue = true;
             BrokenRuleCollection brokenRules = new BrokenRuleCollection();
+            GameResult tmpList = new GameResult();
 
             //=====  DEFINE THE RULES IN WHICH THE FORM IS TO FOLLOW  =====\\
-            if (string.IsNullOrEmpty(BallNumber_1.Text.Trim()))
-                brokenRules.Add("Ball Number 1", "Required Field");
-            if (string.IsNullOrEmpty(BallNumber_2.Text.Trim()))
-                brokenRules.Add("Ball Number 2", "Required Field");
-            if (string.IsNullOrEmpty(BallNumber_3.Text.Trim()))
-                brokenRules.Add("Ball Number 3", "Required Field");
-            if (string.IsNullOrEmpty(BallNumber_4.Text.Trim()))
-                brokenRules.Add("Ball Number 4", "Required Field");
-            if (string.IsNullOrEmpty(BallNumber_5.Text.Trim()))
-                brokenRules.Add("Ball Number 5", "Required Field");
-            if (string.IsNullOrEmpty(SpecialBallNumber.Text.Trim()))
-                brokenRules.Add("Special Ball", "Required Field");
+
+            foreach (RepeaterItem item in rptBallNumber.Items)
+            {
+                TextBox tmpBall = (TextBox)item.FindControl("BallNumber");
+                if (string.IsNullOrEmpty(tmpBall.Text))
+                {
+                    brokenRules.Add("Ball Number", "Required Field");
+                }
+            }
+
             if (string.IsNullOrEmpty(calDrawingDate.Text))
                 brokenRules.Add("Drawing Date", "Required Field");
             if (string.IsNullOrEmpty(txtJackpotAmount.Text.Trim()))
@@ -283,12 +225,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
-
         #endregion
 
-        protected void rptBallNumber_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
 
-        }
     }
 }

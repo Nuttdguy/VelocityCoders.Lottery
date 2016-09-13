@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="GameAddNewBLL.cs" />
     <Compile Include="GameResultAddBLL.cs" />
+    <Compile Include="LotteryBLL.cs" />
     <Compile Include="ModifyDrawingBLL.cs" />
     <Compile Include="GameResultGetBLL.cs" />
     <Compile Include="LotteryName_Get.cs" />

@@ -152,6 +152,9 @@ h1:after {
   display: inline-block;
   vertical-align: middle;
 }
+.sideBarContainer.gameResult {
+  min-height: 40vh;
+}
 .sideBarContainer.gameResult .sidebarSpacer {
   display: block;
   padding-top: 16px;
