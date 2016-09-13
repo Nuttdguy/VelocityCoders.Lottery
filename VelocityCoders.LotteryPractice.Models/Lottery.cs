@@ -10,5 +10,6 @@ namespace VelocityCoders.LotteryPractice.Models
         public string LotteryName { get; set; }
         public bool HasSpecialBall { get; set; }
         public bool IsRegularBall { get; set; }
+        public int NumberOfBalls { get; set; }
     }
 }

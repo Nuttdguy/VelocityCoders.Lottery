@@ -332,7 +332,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //^^^^^^^^^^^^^^  END SECTION
 
 
-        //.............. BEGIN SECTION 
+        //..[6]............ BEGIN SECTION 
         #region //======= [EVENT] UPDATE DRAWING DATA  =======\\
         protected void UpdateGameResult_ClickBtn(object sender, EventArgs e)
         {
@@ -403,7 +403,8 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         //^^^^^^^^^^^^^^  END SECTION
 
-        //.............. BEGIN SECTION 
+
+        //..[7]............ BEGIN SECTION 
         #region //=======  [EVENT] DELETE DRAWING  =======\\ 
         protected void DeleteLotteryDrawing(int drawId)
         {
@@ -417,7 +418,7 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
         //^^^^^^^^^^^^^^  END SECTION
 
 
-        //.............. BEGIN SECTION 
+        //..[8]............ BEGIN SECTION 
         #region //=======  [EVENT] REPEAT AND BIND 'EDIT' AND 'DELETE' BUTTON  =======\\
         //==  SETS LOTTERYDRAWID FOR EACH EDIT|DELETE BUTTON >>  ON_LOAD OF REPEATER, THE LOTTERYDRAWINGID IS BEING ASSIGNED A VALUE FOR EACH BUTTON  ==//
         protected void rptViewResult_ItemDataBound(object sender, RepeaterItemEventArgs e)

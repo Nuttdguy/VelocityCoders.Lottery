@@ -4,6 +4,8 @@ using VelocityCoders.LotteryPractice.BLL;
 using System.Collections;
 using System.Collections.Generic;
 using VelocityCoders.LotteryPractice.Models;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 
 
 namespace VelocityCoders.LotteryPractice.Webforms.Admin
@@ -20,7 +22,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
             }
         }
 
-
         private const string _PageTitleResult = "Add Game Result";
 
 
@@ -34,8 +35,6 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                 //==  [1]. NEED TO CAPTURE FORM DATA FOR EACH INPUT FIELD  ==\\
                 GameResultCollection CollectFormResult = new GameResultCollection();
 
-                //==  [2]. GO TO BLL
-                //int totalGameBalls = GameResultAddBLL.TotalOfGameBalls(drpGameName.SelectedValue.ToLower());
 
                 string selectedGame = drpGameName.SelectedItem.Text;
                 int totalGameBalls = 0;
@@ -51,32 +50,24 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
                     CollectFormResult.Add(CaptureFormInputValues(totalGameBalls, i));
                 }
 
-                //==  [4]. GO TO BLL
-                string checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls - 1);
 
+                try
+                {
+                    //==  [4]. GO TO BLL
+                    string checkResult = GameResultAddBLL.SaveGameResult(CollectFormResult, totalGameBalls - 1);
+                    //==  [6]. DISPLAY RESULT TO FRONT PAGE
+                    lblMessage.Text = checkResult;
+                }
+                catch (BLLException ex)
+                {
+                    if (ex.BrokenRules != null && ex.BrokenRules.Count > 0)
+                        DisplayLocalMessage(ex.Message, ex.BrokenRules);
+                    else
+                        DisplayLocalMessage(ex.Message);
+                }
 
-                //==  [6]. DISPLAY RESULT TO FRONT PAGE
-                lblMessage.Text = checkResult;
             }
 
-            #region ||=== LOGIC FOR DISPLAYING RESULTS TO FRONT-PAGE
-            //==  WORK ON MOVING CODE TO BUSINESS LOGIC LAYER  ==\\
-            //GameResultCollection gameResultList = new GameResultCollection();
-            //List<string> displayResult = new List<string>();
-            //int ballCount = (int)BallQuantity.Seven;
-
-
-
-            //for (int i = 0; i < ballCount; i++)
-            //{
-            //    //==  SET AND RETURN AN INSTANCE OF GAME RESULT CLASS  ==\\
-            //    gameResultList.Add(CaptureFormValues(i));
-            //    displayResult.Add(CompileList(gameResultList, i, ballCount));
-            //}
-
-            //lblMessage.Text = string.Empty;
-            //displayResultOnFrontPage(displayResult);
-            #endregion
         }
         #endregion
 
@@ -292,8 +283,12 @@ namespace VelocityCoders.LotteryPractice.Webforms.Admin
 
         }
 
+
         #endregion
 
+        protected void rptBallNumber_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
 
+        }
     }
 }

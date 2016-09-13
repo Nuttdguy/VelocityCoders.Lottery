@@ -23,19 +23,6 @@
   <div id="ContentContainer">
     <div class="formContainer">
 
-      <!-- SAVE TABLE SUBNAV >> FOR FRONT-END IMPEMENTATION PURPOSES  -->
-      <%--  BEGIN  ======  TABLE-SUB-NAV  --%>
-      <!--
-      <div class="addGameViewContainer">    
-        <ul>
-          <li class="addFormLink"><a>Add</a></li>
-          <li class="viewFormLink"><a>View</a></li>
-        </ul>
-      </div>--> <%--  END  *****  TABLE-SUB-NAV  --%>
-
-
-
-
       <%--  BEGIN  ====== VIEW GAME FORM  --%>
       <label for="checkBoxViewGame">VIEW GAME</label>
       <input type="checkbox" ID="checkBoxViewGame" checked />
@@ -182,14 +169,3 @@
 
 </asp:Content>
         
-
-
-
-<%--              <td><asp:Label runat="server" ID="lblDrawingDate" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber1" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber2" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber3" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber4" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber5" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber6" /></td>
-              <td><asp:Label runat="server" ID="lblBallNumber7" /></td>--%>

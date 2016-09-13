@@ -17,19 +17,7 @@
     <%--  BEGIN ======  INPUT FORM CONTAINER  --%>
     <div class="formContainer gameResult">
       <ErrorPanel:MessageBrokenRules runat="server" ID="MessageBrokenPanel"  Visible="false" />
-<%--      <asp:Panel runat="server" class="PageMessage" ID="PageMessageArea" Visible="true">
-        <asp:Label runat="server" ID="lblPageMessage" />
-        <asp:ListView runat="server" ID="MessageList" ItemPlaceholderID="MessageListPlaceHolder">
-          <LayoutTemplate>
-            <ul>
-              <asp:PlaceHolder runat="server" ID="MessageListPlaceHolder" />
-            </ul>
-          </LayoutTemplate>
-          <ItemTemplate>
-            <li class="errorList"><%# Eval("PropertyName") %>: <%# Eval("Message") %></li>
-          </ItemTemplate>
-        </asp:ListView>
-      </asp:Panel>--%>
+
       <div>
         <label>Game Name: </label>
           <asp:DropDownList runat="server" ID="drpGameName"  DataTextField="LotteryName" DataValueField="LotteryId" >
@@ -69,7 +57,16 @@
     <div class="sideBarContainer gameResult">
       <div class="sidebarSpacer"></div>
       <h2>Ball Numbers</h2>
-      <div class="BallNumberContainer">
+      <asp:Repeater runat="server" ID="rptBallNumber" OnItemDataBound="rptBallNumber_ItemDataBound" >
+        <ItemTemplate>
+          <div class="BallNumberContainer">
+            <label>Second Ball</label>
+            <asp:TextBox runat="server" ID="BallNumber" Text="" TextMode="Number" />
+          </div>
+        </ItemTemplate>
+      </asp:Repeater>
+
+<%--      <div class="BallNumberContainer">
         <label>First Ball</label>
         <asp:TextBox runat="server" ID="BallNumber_1" Text="" TextMode="Number" />
       </div>
@@ -97,7 +94,7 @@
       <div class="BallNumberContainer">
         <label>Special Ball</label>
         <asp:TextBox runat="server" ID="SpecialBallNumber" Text="" TextMode="Number" />
-      </div>
+      </div>--%>
 
     </div> <%--  END ***** SIDEBAR CONTAINER  --%>
 

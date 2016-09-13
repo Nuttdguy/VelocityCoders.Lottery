@@ -16,6 +16,7 @@ namespace VelocityCoders.LotteryPractice.Models
         public string Jackpot { get; set; }
         public DateTime DrawDate { get; set; }
         public int BallNumber { get; set; }
+        public int NumberOfBalls { get; set; }
 
         public string BallNumber1 { set; get; }
         public string BallNumber2 { get; set; }
