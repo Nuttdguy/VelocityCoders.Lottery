@@ -7,8 +7,8 @@
 *.userosscache
 *.sln.docstates
 Log4Net/
-VelocityCoders.FitnessPractice.Common/
-VelocityCoders.FitnessPractice.DAL/
+VelocityCoders.LotteryPractice/VelocityCoders.FitnessPractice.Common/
+VelocityCoders.LotteryPractice/VelocityCoders.FitnessPractice.DAL/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
