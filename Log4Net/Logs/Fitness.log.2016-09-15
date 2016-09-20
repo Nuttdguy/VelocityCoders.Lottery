@@ -1,0 +1,418 @@
+
+2016-09-15 06:57:47,368 [11] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidCastException: Specified cast is not valid.
+   at VelocityCoders.FitnessPractice.DAL.EmailAddressDAL.Delete(Int32 emailId)
+   at VelocityCoders.FitnessPractice.BLL.EmailAddressManager.Delete(Int32 emailId) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPractice.BLL\EmailAddressManager.cs:line 39
+   at VelocityCoders.FitnessPratice.WebForm.Admin.Instructors.ContactInfo.DeleteEmail(Int32 emailId) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\Instructors\ContactInfo.aspx.cs:line 131
+   at VelocityCoders.FitnessPratice.WebForm.Admin.Instructors.ContactInfo.EmailButton_Command(Object sender, CommandEventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\Instructors\ContactInfo.aspx.cs:line 80
+   at System.Web.UI.WebControls.LinkButton.OnCommand(CommandEventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.LinkButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_instructors_contactinfo_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\root\507aa14b\726da03b\App_Web_rmyfa2dm.3.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 07:04:09,723 [7] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.InvalidCastException: Specified cast is not valid.
+   at VelocityCoders.FitnessPractice.DAL.EmailAddressDAL.Delete(Int32 emailId) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPractice.DAL\EmailAddressDAL.cs:line 29
+   at VelocityCoders.FitnessPractice.BLL.EmailAddressManager.Delete(Int32 emailId) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPractice.BLL\EmailAddressManager.cs:line 39
+   at VelocityCoders.FitnessPratice.WebForm.Admin.Instructors.ContactInfo.DeleteEmail(Int32 emailId) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\Instructors\ContactInfo.aspx.cs:line 131
+   at VelocityCoders.FitnessPratice.WebForm.Admin.Instructors.ContactInfo.EmailButton_Command(Object sender, CommandEventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\Instructors\ContactInfo.aspx.cs:line 80
+   at System.Web.UI.WebControls.LinkButton.OnCommand(CommandEventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.WebControls.LinkButton.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   at System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_instructors_contactinfo_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\root\507aa14b\726da03b\App_Web_p2hctdja.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 16:46:23,995 [40] ERROR log4net.ILog The server tag is not well formed.
+System.Web.HttpParseException (0x80004005): The server tag is not well formed. ---> System.Web.HttpException (0x80004005): The server tag is not well formed.
+   at System.Web.UI.TemplateParser.ProcessError(String message)
+   at System.Web.UI.TemplateParser.DetectSpecialServerTagError(String text, Int32 textPos)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   at System.Web.UI.TemplateParser.ParseInternal()
+   at System.Web.UI.TemplateParser.Parse()
+   at System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   at System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
+   at System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 20:47:49,298 [7] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://localhost:60546/EntityLookupService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:60546
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_ksda15rf.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 20:49:12,741 [9] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://localhost:60546/EntityLookupService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:60546
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_ksda15rf.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 20:58:57,425 [6] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://localhost:60546/EntityLookupService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:60546
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_ksda15rf.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 20:59:45,223 [14] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://localhost:60546/EntityLookupService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:60546
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_11nf5vb2.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:05:58,554 [20] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_x1ajcwyh.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:07:50,432 [22] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_blhbfdex.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:08:01,018 [26] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_blhbfdex.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:09:56,362 [27] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_blhbfdex.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:27:11,249 [19] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_blhbfdex.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+2016-09-15 21:28:55,700 [18] ERROR log4net.ILog Exception of type 'System.Web.HttpUnhandledException' was thrown.
+System.Web.HttpUnhandledException (0x80004005): Exception of type 'System.Web.HttpUnhandledException' was thrown. ---> System.ServiceModel.FaultException: The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.IEntityLookupService.GetEntityCollection()
+   at VelocityCoders.FitnessPratice.WebForm.ServiceEntityLookup.EntityLookupServiceClient.GetEntityCollection() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Service References\ServiceEntityLookup\Reference.cs:line 319
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.BindEntityDropDown() in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 147
+   at VelocityCoders.FitnessPratice.WebForm.Admin.LookupTablesArea.EntityTypeLookup.Page_Load(Object sender, EventArgs e) in F:\Visual Studio Solutions\VelocityCoders.FitnessPractice\VelocityCoders.FitnessPratice.WebForm\Admin\LookupTablesArea\EntityTypeLookup.aspx.cs:line 22
+   at System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.admin_lookuptablesarea_entitytypelookup_aspx.ProcessRequest(HttpContext context) in C:\Users\phou\AppData\Local\Temp\Temporary ASP.NET Files\vs\507aa14b\726da03b\App_Web_nya0ng2n.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
